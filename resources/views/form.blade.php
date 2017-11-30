@@ -1,14 +1,16 @@
-@extends('vendor.adminlte.layouts.app')
-@section('main-content')
-<div class="container-fluid spark-screen">
-      <!-- Default box -->
-      <div class="box box-info">
-         <div class="box-header with-border text-center" style="padding: 7px;">
-            <i class="box-title text-info" style="font-size: 16px;">Creacion de historia</i>
-         </div>
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form method="POST" class="form-horizontal" data-toggle="validator">
+        {{ csrf_field() }} {{ method_field('POST') }}
+    
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center"></h4>
+      </div>
+      <div class="modal-body">
          <div class="box-body">
-            <div class="container">
-              <form action="" method="POST" class="form-horizontal"></form>
+            <div>
                <div class="col-md-6">
                   <div class="form-group">
                      <div class="col-md-10">
@@ -18,7 +20,7 @@
                            </div>
                            <input type="text" id="numbh" class="form-control" placeholder="Numero de historia"> 
                         </div>
-                        <small id="emailHelp" class="form-text text-muted">Es necesario ingresar por lo menos 7 digitos.</small>
+                        <small id="emailHelp" class="form-text text-muted">Necesario ingresar por lo menos 7 digitos.</small>
                      </div>
                   </div>
                </div>
@@ -30,7 +32,7 @@
                             <option value="Extranjero">E</option>
                             <option value="N">N/p</option>
                         </select>
-                        <small id="emailHelp" class="form-text text-muted">Nacionalidad.</small>
+                        <small id="emailHelp" class="form-text text-muted">Cedula</small>
                      </div>
                      <div class="col-md-8">
                          <div class="input-group">
@@ -197,17 +199,18 @@
                      <div class="col-md-10">
                      <textarea size="x2" class="form-control" placeholder="Observaciones">
                      </textarea>
-                        {{-- {!! Form::textarea('obs', null, ['class' => 'form-control','size' => 'x2', 'placeholder' => 'Observaciones']) !!} --}}
                         <small id="emailHelp" class="form-text text-muted">Ingrese obervaciones acerca del paciente o su historia.</small>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         <div class="box-footer">
-            <button type="submit" class="btn btn-sm btn-primary pull-right"><span class="fa fa-plus"></span> Guardar</button>
-         </div>
-         </form>
       </div>
-</div>
-@endsection
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-save"><span class="fa fa-plus"></span> Guardar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

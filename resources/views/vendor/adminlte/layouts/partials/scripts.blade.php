@@ -21,7 +21,7 @@
         todayHighlight: true
     })
 </script>
-<script>
+{{-- <script>
 // Dibujando data  
   $(document).ready(function(){
     
@@ -90,7 +90,44 @@
                     .draw();
             } );
     });
-</script>
+</script> --}}
+
+<script type="text/javascript">
+     
+
+      function addForm() {
+        save_method = "add";
+        $('input[name=_method]').val('POST');
+        $('#modal-form').modal('show');
+        $('#modal-form form')[0].reset();
+        $('.modal-title').text('Crear Historia');
+      }
+
+      $(function(){
+        $('#modal-form form').validator().on('submit', function (e) {
+          if (!e.isDefaultPrevented()){
+            var id = $('#id').val();
+            if (save_method == 'add') url = "{{ url('item') }}";
+            else url = "{{ url('item') . '/' }}" + id;
+
+            $.ajax({
+                url : url,
+                type : "POST",
+                data : $('#modal-form form').serialize(),
+                success : function($data) {
+                  $('#modal-form').modal('hide');
+                  table.ajax.reload();
+                },
+                error : function(){
+                  alert('Ooops! Algo esta mal!');
+                } 
+            });
+            return false;
+          }
+        });
+      });
+
+    </script>
 
 
 

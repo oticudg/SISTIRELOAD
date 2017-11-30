@@ -2,8 +2,8 @@
 
 namespace Sisti\Http\Controllers;
 
-use Sisti\Index;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class IndexController extends Controller
 {
@@ -14,7 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        //
+       return view('records');
     }
 
     /**
@@ -35,16 +35,32 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'type_doc' => $request['type_doc'],
+            'patient_id' => $request['patient_id'],
+            'sex' => $request['sex'],
+            'number_record' => $request['number_record'],
+            'name' => $request['name'],
+            'last_name' => $request['last_name'],
+            'birthdate' => $request['birthdate'],
+            'admission_date' => $request['admission_date'],
+            'egress_date' => $request['egress_date'],
+            'anotherc_id' => $request['anotherc_id'],
+            'observation' => $request['observation'],
+            'user_id' => $request['user_id'],
+            'parish_id' => $request['parish_id']
+
+        ];
+         return Index::create($data);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Sisti\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Index $index)
+    public function show($id)
     {
         //
     }
@@ -52,10 +68,10 @@ class IndexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Sisti\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Index $index)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +80,10 @@ class IndexController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Sisti\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Index $index)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,11 +91,22 @@ class IndexController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Sisti\Index  $index
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Index $index)
+    public function destroy($id)
     {
         //
+    }
+
+    public function apiIndex(){
+        $index = Index::all();
+
+        return Datatables::of($index)
+        ->addColumn('action', function($index) {
+            return  '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Ver</a> ' .
+                    '<a onclick="editForm('. $index->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Editar</a> ' .
+                    '<a onclick="deleteData('. $index->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
+        })->make(true);
     }
 }
