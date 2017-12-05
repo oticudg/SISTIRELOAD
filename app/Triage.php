@@ -8,4 +8,9 @@ class Triage extends Model
 {
     protected $table = "triages";
     protected $fillable = ['triage'];
+
+    public function indexes(){
+
+        return $this->hasMany(Index::class);
+    } 
 }

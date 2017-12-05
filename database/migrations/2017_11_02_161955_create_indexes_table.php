@@ -24,6 +24,8 @@ class CreateIndexesTable extends Migration
             $table->date('birthdate');
             $table->date('admission_date');
             $table->date('egress_date');
+            $table->integer('triage_id')->unsigned();
+            $table->foreign('triage_id')->references('id')->on('triages');
             $table->integer('anotherc_id')->unsigned();
             $table->foreign('anotherc_id')->references('id')->on('foreigncountries');
             $table->text('observation');
