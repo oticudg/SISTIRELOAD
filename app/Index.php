@@ -7,27 +7,41 @@ use Illuminate\Database\Eloquent\Model;
 class Index extends Model
 {
     protected $table = "indexes";
-    protected $fillable = ['type_doc', 'patient_id', 'sex', 'number_record', 'name', 'last_name', 'birthdate', 'admission_date', 'egress_date', 'anotherc_id', 'observation', 'user_id', 'parish_id'];
+    protected $fillable = [
+    'type_doc',
+    'patient_id',
+    'sex',
+    'number_record',
+    'name',
+    'last_name',
+    'birthdate',
+    'triage_id',
+    'admission_date',
+    'egress_date',
+    'anotherc_id',
+    'observation',
+    'user_id',
+    'parish_id'
+    ];
 
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo(User::class);
     } 
 
-    public function triage(){
-
+    public function triage()
+    {
         return $this->belongsTo(Triage::class);
     }
 
-    public function foreigncountry(){
-
-        return $this->belongsTo(ForeignCountry::class);
+    public function foreignCountry()
+    {
+        return $this->belongsTo(ForeignCountry::class, 'anotherc_id');
     } 
 
-    public function parish(){
-
-        return $this->belongsTo(Parish::class);
+    public function parish()
+    {
+        return $this->belongsTo(Parish::class, 'parish_id');
     } 
-
 
 }

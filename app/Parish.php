@@ -16,6 +16,6 @@ class Parish extends Model
 
     public function municipalities(){
 
-        return $this->belongsTo(Municipality::class);
+        return $this->belongsTo(Municipality::class, 'municipality_id');
     } 
 }
