@@ -21,6 +21,30 @@
         todayHighlight: true
     })
 </script>
+
+<script type="text/javascript">
+     var table = $('#records-table').DataTable({
+                processing: true,
+                serverSide: true,
+    
+                ajax:{
+                url:'{{ route('api.record') }}',
+                headers:{
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization');
+                }
+            },
+                columns: [
+                  {data: 'id', name: 'id'},
+                  {data: 'name', name: 'name'},
+                  {data: 'last_name', name: 'last_name'},
+                  {data: 'action', name: 'accion', orderable: false, searchable: false}
+                ]
+              });
+
+</script>
 {{-- <script>
 // Dibujando data  
   $(document).ready(function(){
@@ -92,7 +116,7 @@
     });
 </script> --}}
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
      
 
       function addForm() {
@@ -127,7 +151,7 @@
         });
       });
 
-    </script>
+    </script> --}}
 
 
 

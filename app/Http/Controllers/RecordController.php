@@ -3,9 +3,10 @@
 namespace Sisti\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Yajra\DataTables\Datatables;
+use Sisti\Index;
 
-class RecordsController extends Controller
+class RecordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class RecordsController extends Controller
      */
     public function create()
     {
-       return view('admin.records.create');
+        //
     }
 
     /**
@@ -81,5 +82,17 @@ class RecordsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apiRecord(){
+        
+        $record = Index::all();
+
+        return Datatables::of($record)
+        ->addColumn('action', function($record) {
+            return  '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Ver</a> ' .
+                    '<a onclick="editForm('. $record->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Editar</a> ' .
+                    '<a onclick="deleteData('. $record->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
+        })->make(true);
     }
 }

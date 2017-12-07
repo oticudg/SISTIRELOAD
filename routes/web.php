@@ -15,12 +15,18 @@ Route::get('/','Auth\LoginController@ShowLoginForm');
 Route::auth();
 
 Route::group(['middleware' => 'auth'], function () {
-			
+
+	Route::resource('records', 'RecordController');
+	Route::get('api/record', 'RecordController@apiRecord')->name('api.record');
+		
+
+
+
+
+
 	Route::get('change-password', function() {return view('admin.users.change-password'); });
 	Route::post('change-password', 'UpdatePasswordController@update');				
-		//records
-		Route::get('records','RecordsController@index');
- 		Route::resource('records','RecordsController');
+		
 
  		//users
 		Route::get('users','UsersController@index');
