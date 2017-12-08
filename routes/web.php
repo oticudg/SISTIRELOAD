@@ -17,7 +17,7 @@ Route::auth();
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('records', 'RecordController');
-	Route::get('api/record', 'RecordController@apiRecord')->name('api.record');
+	Route::any('api/record', 'RecordController@apiRecord');
 		
 
 
