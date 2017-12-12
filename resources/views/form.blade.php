@@ -7,24 +7,24 @@
       </div>
       <div class="modal-body">
          <form>
-          
+          {{ csrf_field() }} {{ method_field('POST') }}
+          <input type="hidden" id="id" name="id">
           <div class="row">
             <div class="form-group col-md-6">
               <div class="input-group">
                           <div class="input-group-addon">
                               <span class="fa fa-file-text text-primary"></span>
                            </div>
-                           <input type="text" id="numbh" class="form-control" placeholder="Numero de historia"> 
+                           <input type="text" id="numbh" name="numbh" class="form-control" placeholder="Numero de historia"> 
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Necesario ingresar por lo menos 7 digitos.</small>
             </div>
-    
             <div class="form-group col-md-6">
               <div class="col-md-3">
-                        <select id="typedoc" class="form-control">
-                            <option value="Venezolano">V</option>
-                            <option value="Extranjero">E</option>
-                            <option value="N">N/p</option>
+                        <select id="typedoc" name="typedoc" class="form-control">
+                            <option value="Venezolano/a">V</option>
+                            <option value="Extranjero/a">E</option>
+                            <option value="N/p">N/p</option>
                         </select>
                         <small id="emailHelp" class="form-text text-muted">Cedula</small>
                      </div>
@@ -32,7 +32,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-id-card text-primary"></span>
                            </div>
-                           <input type="text" id="numbh" class="form-control" placeholder="Numero de cedula">
+                           <input type="text" id="idpatient" name="idpatient" class="form-control" placeholder="Numero de cedula">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Es necesario ingresar entre 5-8 digitos.</small>
             </div>
@@ -48,7 +48,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-user-circle text-primary"></span>
                            </div> 
-                           <input type="text" id="numbh" class="form-control" placeholder="Nombres">
+                           <input type="text" id="name" name="name" class="form-control" placeholder="Nombres">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Ingrese los nombres del paciente.</small>
 
@@ -60,7 +60,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-user-circle-o text-primary"></span>
                            </div>
-                           <input type="text" id="numbh" class="form-control" placeholder="Apellidos">
+                           <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellidos">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Ingrese los apellidos del paciente.</small>
 
@@ -76,7 +76,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-venus-mars text-primary"></span>
                            </div>
-                           <select id="typedoc" class="form-control">
+                           <select id="sex" name="sex" class="form-control">
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
                            </select> 
@@ -91,7 +91,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-calendar text-primary"></span>
                            </div> 
-                            <input type="text" class="form-control" placeholder="dd/mm/aaaa">
+                            <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
 
@@ -106,7 +106,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-calendar text-primary"></span>
                            </div> 
-                            <input type="text" class="form-control" placeholder="dd/mm/aaaa">
+                            <input type="text" class="form-control" id="admissiondate" name="admissiondate" placeholder="dd/mm/aaaa">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
                   
@@ -117,7 +117,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-calendar text-primary"></span>
                            </div> 
-                            <input type="text" class="form-control" placeholder="dd/mm/aaaa">
+                            <input type="text" class="form-control" id="egressdate" name="egressdate" placeholder="dd/mm/aaaa">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de egreso del paciente.</small>
                   
@@ -132,10 +132,8 @@
                           <div class="input-group-addon">
                               <span class="fa fa-map text-primary"></span>
                            </div> 
-                           <select id="typedoc" class="form-control">
-                            <option value="Zulia">Zulia</option>
-                            <option value="Barinas">Barinas</option>
-                            <option value="Falcon">Falcon</option>
+                           <select id="state" name="state" class="form-control">
+                            <option value="" disabled selected>Ingrese el estado</option>
                            </select>
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Seleccione el estado de donde proviene del paciente.</small>
@@ -147,10 +145,8 @@
                           <div class="input-group-addon">
                               <span class="fa fa-map text-primary"></span>
                            </div> 
-                           <select id="typedoc" class="form-control">
-                            <option value="Zulia">Maracaibo</option>
-                            <option value="Barinas">Barinas</option>
-                            <option value="Falcon">Falcon</option>
+                           <select id="municipality" name="municipality" class="form-control">
+                             <option value='' disabled selected>Ingrese el municipio</option>
                            </select>
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Seleccione el municipio de donde proviene del paciente.</small>
@@ -167,10 +163,8 @@
                           <div class="input-group-addon">
                               <span class="fa fa-map text-primary"></span>
                            </div> 
-                           <select id="typedoc" class="form-control">
-                            <option value="Zulia">Raul Leoni</option>
-                            <option value="Barinas">Barinas</option>
-                            <option value="Falcon">Falcon</option>
+                           <select id="parish" name="parish" class="form-control">
+                             <option value='' disabled selected>Ingrese la parroquia</option>
                            </select>
                         </div>
                         <small id="emailHelp" class="form-text text-muted">Seleccione la parroquia de donde proviene del paciente.</small>
@@ -182,7 +176,7 @@
                           <div class="input-group-addon">
                               <span class="fa fa-globe text-primary"></span>
                            </div>
-                           <select id="typedoc" class="form-control">
+                           <select id="foreigncountry" name="foreigncountry" class="form-control">
                             <option value="Zulia">Colombia</option>
                             <option value="Barinas">Barinas</option>
                             <option value="Falcon">Falcon</option>
@@ -199,20 +193,15 @@
               <div class="form-group col-md-6"> 
                      <textarea size="x2" class="form-control" placeholder="Observaciones">
                      </textarea>
-                        <small id="emailHelp" class="form-text text-muted">Ingrese obervaciones acerca del paciente o su historia.</small>
+                        <small id="observation" name="observation" class="form-text text-muted">Ingrese obervaciones acerca del paciente o su historia.</small>
               </div>
-            </div>
-
-
-          
-          
-        
+            </div>          
         
       </div>
       
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
       </form>
     </div>

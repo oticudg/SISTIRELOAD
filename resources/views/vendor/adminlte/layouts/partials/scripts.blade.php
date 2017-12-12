@@ -9,6 +9,8 @@
 <script src="{{ url ('/plugins/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/bootstrap-datepicker.es.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/moment.min.js') }}" type="text/javascript"></script>
+<script src="{{ url ('/plugins/validator.min.js') }}"></script>
+
 <script type="text/javascript">
      //Date picker
     $('.date').datepicker({
@@ -20,6 +22,60 @@
         autoclose: true,
         todayHighlight: true
     })
+</script>
+<script type="text/javascript">
+    // lo quitas luego
+    $("#modal-form").modal('show');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: location.origin + '/states',
+        dataType: 'json'
+    })
+    .done(function(res){
+        for(var r in res) {
+            $("#state").append("<option value='"+r+"'>"+res[r]+"</option>");
+        }
+    });
+
+
+    $("#state").change(function(){
+        $.ajax({
+            url: location.origin + '/municipalities',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                id: $(this).val()
+            }
+        })
+        .done(function(res){
+            $("#municipality").html("<option value='' disabled selected>Ingrese el municipio</option>");
+            $("#parish").html("<option value='' disabled selected>Ingrese la parroquia</option>");
+            for(var r in res) {
+                $("#municipality").append("<option value='"+r+"'>"+res[r]+"</option>");
+            }
+        });
+    });
+
+    $("#municipality").change(function(){
+        $.ajax({
+            url: location.origin + '/parishes',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                id: $(this).val()
+            }
+        })
+        .done(function(res){
+            $("#parish").html("<option value='' disabled selected>Ingrese la parroquia</option>");
+            for(var r in res) {
+                $("#parish").append("<option value='"+r+"'>"+res[r]+"</option>");
+            }
+        });
+    });
 </script>
 <script type="text/javascript">
      var table = $('#records-table').DataTable({
@@ -95,8 +151,33 @@
         $('input[name=_method]').val('POST');
         $('#modal-form').modal('show');
         $('#modal-form form')[0].reset();
-        $('.modal-title').text('Crear Item');
+        $('.modal-title').text('Crear Historia');
       }
+
+      $(function(){
+        $('#modal-form form').validator().on('submit', function (e) {
+          if (!e.isDefaultPrevented()){
+            var id = $('#id').val();
+            if (save_method == 'add') url = "{{ url('records') }}";
+            else url = "{{ url('records') . '/' }}" + id;
+            $.ajax({
+                url : url,
+                type : "POST",
+                data : $('#modal-form form').serialize(),
+                success : function($data) {
+                  $('#modal-form').modal('hide');
+                  table.ajax.reload();
+                },
+                error : function(){
+                  alert('Ooops! Algo esta mal!');
+                } 
+            });
+            return false;
+          }
+        });
+      });
+
+
 </script>
  {{--
 <script>

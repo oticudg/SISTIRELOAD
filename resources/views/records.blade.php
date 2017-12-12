@@ -33,5 +33,6 @@
         </table>
         </div>
 </div>
+@include('form')
 
 @endsection

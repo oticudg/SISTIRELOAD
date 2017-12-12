@@ -4,6 +4,7 @@ namespace Sisti\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Sisti\ { Index, State, Municipality, Parish };
 
 class IndexController extends Controller
 {
@@ -109,4 +110,19 @@ class IndexController extends Controller
                     '<a onclick="deleteData('. $index->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
         })->make(true);
     }
+
+     public function getStates(){
+        $state = State::pluck('state','id');
+        return response()->json($state);
+    } 
+
+    public function getMunicipalities(Request $request){
+        $municipality = Municipality::where('state_id', '=', $request->id)->pluck('municipality','id');
+        return response()->json($municipality);
+    }   
+
+    public function getParishes(Request $request){
+        $parish = Parish::where('municipality_id', '=', $request->id)->pluck('parish','id');
+        return response()->json($parish);
+    }  
 }

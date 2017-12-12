@@ -10,19 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::any('states','IndexController@getStates');
+Route::any('municipalities','IndexController@getMunicipalities');
+Route::any('parishes','IndexController@getParishes');
 Route::get('/','Auth\LoginController@ShowLoginForm');
 Route::auth();
 
 Route::group(['middleware' => 'auth'], function () {
 
+
+
 	Route::resource('records', 'RecordController');
 	Route::any('api/record', 'RecordController@apiRecord');
 		
-
-
-
-
 
 	Route::get('change-password', function() {return view('admin.users.change-password'); });
 	Route::post('change-password', 'UpdatePasswordController@update');				
