@@ -20,8 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-	Route::resource('records', 'RecordController');
-	Route::any('api/record', 'RecordController@apiRecord');
+	Route::resource('indexes', 'IndexController');
+	Route::any('api/index', 'IndexController@apiIndex');
 		
 
 	Route::get('change-password', function() {return view('admin.users.change-password'); });

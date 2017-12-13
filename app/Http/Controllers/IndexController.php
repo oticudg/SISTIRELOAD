@@ -105,11 +105,10 @@ class IndexController extends Controller
 
         return Datatables::of($index)
         ->addColumn('action', function($index) {
-            return  '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Ver</a> ' .
-                    '<a onclick="editForm('. $index->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Editar</a> ' .
-                    '<a onclick="deleteData('. $index->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
+            return  "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' href='".route('users.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $index->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
+
 
      public function getStates(){
         $state = State::pluck('state','id');
@@ -124,5 +123,13 @@ class IndexController extends Controller
     public function getParishes(Request $request){
         $parish = Parish::where('municipality_id', '=', $request->id)->pluck('parish','id');
         return response()->json($parish);
-    }  
+    }
+
+        // public function apiRecord(Datatables $datatables)
+    // {
+    //     return $datatables->eloquent(Index::query())
+    //                       ->addColumn('action', function ($record) {
+    //                           return "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' href='".route('users.edit', $record->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $record->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $record->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+    //                     })->make(true);
+    // }  
 }

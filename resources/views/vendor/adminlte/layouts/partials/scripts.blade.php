@@ -24,8 +24,6 @@
     })
 </script>
 <script type="text/javascript">
-    // lo quitas luego
-    $("#modal-form").modal('show');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -84,7 +82,7 @@
                 responsive: true,
                 ajax:{
                 type:'POST',    
-                url:'api/record',
+                url:'api/index',
                 headers:{
                    'X-CSRF-TOKEN': '{{csrf_token()}}' 
                 },
@@ -131,7 +129,7 @@
               });
             $("#searchrec").click(function (e) {
             e.preventDefault();
-            $("table#records-table tfoot").toggle();
+            $("table#records-table tfoot").fadeToggle();
               })
                 // Adicion de inputs a cada una de las columnas en tablas
             $('#records-table tfoot th').each( function () {
@@ -177,6 +175,13 @@
         });
       });
 
+
+      $(function() {
+    $('#showrecord').on("modal-showr", function (e) {
+         $("#favoritesModalLabel").html($(e.relatedTarget).data('title'));
+         $("#fav-title").html($(e.relatedTarget).data('title'));
+    });
+});
 
 </script>
  {{--

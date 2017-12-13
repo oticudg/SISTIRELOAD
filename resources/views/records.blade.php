@@ -34,5 +34,6 @@
         </div>
 </div>
 @include('form')
+@include('showrecords')
 
 @endsection
