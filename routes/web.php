@@ -18,10 +18,9 @@ Route::auth();
 
 Route::group(['middleware' => 'auth'], function () {
 
-
-
 	Route::resource('indexes', 'IndexController');
 	Route::any('api/index', 'IndexController@apiIndex');
+
 		
 
 	Route::get('change-password', function() {return view('admin.users.change-password'); });

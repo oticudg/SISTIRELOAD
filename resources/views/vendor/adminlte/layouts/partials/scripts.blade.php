@@ -174,14 +174,15 @@
           }
         });
       });
+        function showForm() {
+        $('input[name=_method]').val('POST');
+        $('#modal-showr').modal('show');
+        $('#modal-showr form')[0].reset();
+        $('.modal-title').text('Historia Completa');
+      }
 
 
-      $(function() {
-    $('#showrecord').on("modal-showr", function (e) {
-         $("#favoritesModalLabel").html($(e.relatedTarget).data('title'));
-         $("#fav-title").html($(e.relatedTarget).data('title'));
-    });
-});
+ 
 
 </script>
  {{--

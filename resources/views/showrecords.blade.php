@@ -6,6 +6,66 @@
         <h4 class="modal-title text-center" id="exampleModalLabel"></h4>
       </div>
       <div class="modal-body">
+        <div class="table-responsive">
+          <table id="" class="table table-striped table-bordered table-hover table-condensed">       
+            <tbody>
+
+        <tr>
+          
+            <th class="col-md-3">Historia:</th>
+            <td class="col-md-3">1321312</td>
+            
+            <th class="col-md-3">Cedula:</th>
+            <td class="col-md-3">155133</td>
+  
+        </tr>
+        <tr>
+          <th colspan="" >Nombres:</th>
+            <td class="">Emanuel Surveyor</td>
+
+            <th colspan="" >Apellidos:</th>
+            <td class="">Parra Coello</td>
+            
+        </tr>
+        <tr>
+          <th colspan="" >Sexo:</th>
+          <td class="">Masculino</td>
+
+          <th colspan="" >Fecha de nacimiento:</th>
+          <td class="">13/12/1993</td>
+            
+        </tr>
+      <tr>
+          <th colspan="" >Fecha de ingreso:</th>
+          <td class="">14/02/2007</td>
+          <th colspan="" >Fecha de egreso:</th>
+          <td class="">15/01/2008</td>
+        </tr>
+
+        <tr>
+          <th colspan="" >Estado:</th>
+          <td class="">Zulia</td>
+          <th colspan="" >Municipio:</th>
+          <td class="">Maracaibo</td>
+        </tr>
+
+        <tr>
+          <th colspan="" >Parroquia:</th>
+          <td class="">Raul Leoni</td>
+          <th colspan="" >Pais extranjero:</th>
+          <td class="">Colombia</td>
+        </tr>
+
+        <tr>
+          <th>Observacion del paciente:</th>
+          <td class="" colspan="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </td>
+        </tr>
+    </tbody>
+        </table>
+
+        </div>
+       
+
          <form>
           {{ csrf_field() }} {{ method_field('POST') }}
           <input type="hidden" id="id" name="id">
@@ -17,7 +77,6 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
       </form>
     </div>

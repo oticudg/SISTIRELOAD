@@ -63,7 +63,12 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $index = Index::findOrFail($id);
+        return view('records')->with($index);
+
+       // $product = Index::find($id);
+       //  return response()->json($index);
     }
 
     /**
@@ -105,7 +110,7 @@ class IndexController extends Controller
 
         return Datatables::of($index)
         ->addColumn('action', function($index) {
-            return  "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' href='".route('users.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $index->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            return  "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' onclick='showForm()'  ' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $index->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
 
