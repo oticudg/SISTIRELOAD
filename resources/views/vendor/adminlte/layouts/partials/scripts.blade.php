@@ -74,6 +74,9 @@
             }
         });
     });
+
+
+
 </script>
 <script type="text/javascript">
      var table = $('#records-table').DataTable({
@@ -88,6 +91,39 @@
                 },
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization');
+                },
+                complete: function(){
+                    $("#show-index").click(function(e){
+                        e.preventDefault();
+                        let url=$(this).attr('href');
+                        console.log(url);
+                        $.ajax({
+                            url: url,
+                            method: 'GET',
+                            dataType: 'json',
+                        })
+                        .done(function(res){
+                            console.log(res);
+                            $("#records td#numbrecord").text(res.number_record);
+                            $("#records td#typedoc").text(res.type_doc);
+                            $("#records td#patientid").text(res.patient_id);
+                            $("#records td#names").text(res.name);
+                            $("#records td#lastnames").text(res.last_name);
+                            $("#records td#sex").text(res.sex);
+                            $("#records td#birthdate").text(res.birthdate);
+                            $("#records td#admission").text(res.admission_date);
+                            $("#records td#triage").text(res.triage.triage);
+                            $("#records td#egress").text(res.egress_date);
+                            $("#records td#state").text(res.parish.municipalities.states.state);
+                            $("#records td#municipality").text(res.parish.municipalities.municipality);
+                            $("#records td#parish").text(res.parish.parish);
+                            $("#records td#foreigncountry").text(res.foreign_country.foreign_country);
+                            $("#records td#observation").text(res.observation);
+                            $("#records td#user").text(res.user.name);
+                            $('#modal-showr').modal('toggle');
+                            
+                        });
+                    });
                 }
                 },
                 language: {
@@ -174,12 +210,12 @@
           }
         });
       });
-        function showForm() {
-        $('input[name=_method]').val('POST');
-        $('#modal-showr').modal('show');
-        $('#modal-showr form')[0].reset();
-        $('.modal-title').text('Historia Completa');
-      }
+      //   function showForm() {
+      //   $('input[name=_method]').val('POST');
+      //   $('#modal-showr').modal('show');
+      //   $('#modal-showr form')[0].reset();
+      //   $('.modal-title').text('Historia Completa');
+      // }
 
 
  

@@ -65,10 +65,11 @@ class IndexController extends Controller
     {
 
         $index = Index::findOrFail($id);
-        return view('records')->with($index);
-
-       // $product = Index::find($id);
-       //  return response()->json($index);
+        $index->user->name;
+        $index->triage;
+        $index->foreignCountry;
+        $index->parish->municipalities->states;
+        return response()->json($index);
     }
 
     /**
@@ -110,7 +111,13 @@ class IndexController extends Controller
 
         return Datatables::of($index)
         ->addColumn('action', function($index) {
-            return  "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' onclick='showForm()'  ' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $index->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            return  "<div class='btn-group col-md-offset-3'>
+            
+            <a class='btn btn-info btn-sm' id='show-index' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
+
+            <a class='btn bg-yellow btn-sm' id='edit-index' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
+
+            <a class='btn btn-sm btn-danger' id='delete-index' href='".route('indexes.destroy', $index->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
 

@@ -17,7 +17,7 @@ Route::get('/','Auth\LoginController@ShowLoginForm');
 Route::auth();
 
 Route::group(['middleware' => 'auth'], function () {
-
+	
 	Route::resource('indexes', 'IndexController');
 	Route::any('api/index', 'IndexController@apiIndex');
 
