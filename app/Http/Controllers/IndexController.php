@@ -4,7 +4,7 @@ namespace Sisti\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
-use Sisti\ { Index, State, Municipality, Parish };
+use Sisti\ { Index, State, Municipality, Parish, ForeignCountry, Triage };
 
 class IndexController extends Controller
 {
@@ -36,20 +36,21 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'type_doc' => $request['type_doc'],
-            'patient_id' => $request['patient_id'],
+      $data = [
+            'type_doc' => $request['typedoc'],
+            'patient_id' => $request['idpatient'],
             'sex' => $request['sex'],
-            'number_record' => $request['number_record'],
+            'number_record' => $request['numbh'],
             'name' => $request['name'],
-            'last_name' => $request['last_name'],
+            'last_name' => $request['lastname'],
             'birthdate' => $request['birthdate'],
-            'admission_date' => $request['admission_date'],
-            'egress_date' => $request['egress_date'],
-            'anotherc_id' => $request['anotherc_id'],
+            'admission_date' => $request['admissiondate'],
+            'egress_date' => $request['egressdate'],
+            'anotherc_id' => $request['foreigncountry'],
             'observation' => $request['observation'],
-            'user_id' => $request['user_id'],
-            'parish_id' => $request['parish_id']
+            'user_id' => Auth()->user()->id,
+            'triage_id' => $request['triage'],
+            'parish_id' => $request['parish']
 
         ];
          return Index::create($data);
@@ -113,16 +114,15 @@ class IndexController extends Controller
         ->addColumn('action', function($index) {
             return  "<div class='btn-group col-md-offset-3'>
             
-            <a class='btn btn-info btn-sm' id='show-index' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
+            <a class='btn btn-info btn-sm show-index' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
 
-            <a class='btn bg-yellow btn-sm' id='edit-index' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
+            <a class='btn bg-yellow btn-sm edit-index' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
 
-            <a class='btn btn-sm btn-danger' id='delete-index' href='".route('indexes.destroy', $index->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            <a class='btn btn-sm btn-danger delete-index' href='".route('indexes.destroy', $index->id)."  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
 
-
-     public function getStates(){
+    public function getStates(){
         $state = State::pluck('state','id');
         return response()->json($state);
     } 
@@ -135,6 +135,16 @@ class IndexController extends Controller
     public function getParishes(Request $request){
         $parish = Parish::where('municipality_id', '=', $request->id)->pluck('parish','id');
         return response()->json($parish);
+    }
+
+    public function getFcountries(){
+        $foreigncountry = ForeignCountry::pluck('foreign_country','id');
+        return response()->json($foreigncountry);
+    }
+
+    public function getTriages(){
+        $triage = Triage::pluck('triage','id');
+        return response()->json($triage);
     }
 
         // public function apiRecord(Datatables $datatables)

@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::any('states','IndexController@getStates');
 Route::any('municipalities','IndexController@getMunicipalities');
 Route::any('parishes','IndexController@getParishes');
+Route::any('foreigncountries','IndexController@getFcountries');
+Route::any('triages','IndexController@getTriages');
 Route::get('/','Auth\LoginController@ShowLoginForm');
 Route::auth();
 

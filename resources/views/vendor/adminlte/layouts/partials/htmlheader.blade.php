@@ -8,9 +8,7 @@
     <link href="{{ asset('/plugins/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/pace-theme-minimal.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
-
-    
-  
+    <link href="{{ asset('/plugins/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet"> --}}
   
 

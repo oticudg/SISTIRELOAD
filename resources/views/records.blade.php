@@ -2,7 +2,7 @@
 @section('main-content')
 <div class="box">
 <div class="box-header">
-	<a onclick="addForm()" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Agregar usuario"><span class="fa fa-plus"></span> Registrar</a>
+	<a id="addform" href="{{ route('indexes.store')  }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Agregar usuario"><span class="fa fa-plus"></span> Registrar</a>
     <a class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Buscar por campo" id="searchrec"><span class="fa fa-search"></span> Busqueda avanzada</a>
 </div>
         <div class="box-body table-responsive">
