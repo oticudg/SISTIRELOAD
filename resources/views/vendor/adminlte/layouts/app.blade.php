@@ -29,9 +29,13 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
+
 <body class="skin-purple sidebar-mini">
+
 <div id="app" v-cloak>
+
     <div class="wrapper">
+
 
     @include('adminlte::layouts.partials.mainheader')
     @include('adminlte::layouts.partials.sidebar')
@@ -56,6 +60,5 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
-
 </body>
 </html>

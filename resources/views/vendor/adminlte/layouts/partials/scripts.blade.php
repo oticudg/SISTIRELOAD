@@ -1,22 +1,22 @@
-<!-- REQUIRED JS SCRIPTS -->
-<!-- JQuery and bootstrap are required by Laravel 5.3 in resources/assets/js/bootstrap.js-->
-<!-- Laravel App -->
 <script src="{{ url ('/plugins/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
 <script src="{{ url (mix('/js/app.js')) }}" type="text/javascript"></script>
-<script src="{{ url ('/plugins/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/pace.min.js') }}" type="text/javascript"></script>
+<script src="{{ url ('/plugins/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/bootstrap-datepicker.es.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/moment.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/validator.min.js') }}"></script>
-<script src="{{ url ('/plugins/validator.min.js') }}"></script>
 <script src="{{ url ('/plugins/sweetalert2.min.js') }}"></script>
-
 <script type="text/javascript">
-     //Date picker
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('.date').datepicker({
-      format: "yyyy/mm/dd",
+        format: "yyyy/mm/dd",
         todayBtn: true,
         clearBtn: true,
         language: "es",
@@ -24,13 +24,7 @@
         autoclose: true,
         todayHighlight: true
     })
-</script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+
     $.ajax({
         url: location.origin + '/states',
         dataType: 'json'
@@ -43,12 +37,16 @@
 
 
     $("#state").change(function(){
+        selectMunicipalities($(this).val());
+    });
+
+    function selectMunicipalities(id) {
         $.ajax({
             url: location.origin + '/municipalities',
             method: 'POST',
             dataType: 'json',
             data: {
-                id: $(this).val()
+                id: id
             }
         })
         .done(function(res){
@@ -58,15 +56,14 @@
                 $("#municipality").append("<option value='"+r+"'>"+res[r]+"</option>");
             }
         });
-    });
-
-    $("#municipality").change(function(){
+    }
+    function selectParishes(id) {
         $.ajax({
             url: location.origin + '/parishes',
             method: 'POST',
             dataType: 'json',
             data: {
-                id: $(this).val()
+                id: id
             }
         })
         .done(function(res){
@@ -75,9 +72,13 @@
                 $("#parish").append("<option value='"+r+"'>"+res[r]+"</option>");
             }
         });
+    }
+
+    $("#municipality").change(function(){
+        selectParishes($(this).val());
     });
 
-     $.ajax({
+    $.ajax({
         url: location.origin + '/foreigncountries',
         dataType: 'json'
     })
@@ -97,32 +98,44 @@
         }
     });
 
-
-</script>
-<script type="text/javascript">
-     var table = $('#records-table').DataTable({
-                processing: true,
-                serverSide: true,
-                responsive: true,
-                ajax:{
-                type:'POST',    
-                url:'api/index',
-                headers:{
-                   'X-CSRF-TOKEN': '{{csrf_token()}}' 
-                },
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization');
-                },
-                complete: function(){
-                    $(".show-index").click(function(e){
-                        e.preventDefault();
-                        let url=$(this).attr('href');
-                        $.ajax({
-                            url: url,
-                            method: 'GET',
-                            dataType: 'json',
-                        })
-                        .done(function(res){
+    var table = $('#records-table').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax:{
+            type:'POST',    
+            url:'api/index',
+            headers:{
+                'X-CSRF-TOKEN': '{{csrf_token()}}' 
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization');
+            },
+            complete: function(){
+                $(".show-index, .edit-index, .destroy-index").click(function(e){
+                    e.preventDefault();
+                    let url = $(this).attr('href');
+                    let update = $(this).attr('update');
+                    let show = $(this).attr('class').lastIndexOf('show');
+                    let edit = $(this).attr('class').lastIndexOf('edit');
+                    let destroy = $(this).attr('class').lastIndexOf('destroy');
+                    if (destroy !== -1) {
+                        var method = 'POST';
+                        var data = {
+                            '_method' : 'DELETE',
+                        }
+                    } else {
+                        var method = 'GET';
+                        var data = {}
+                    }
+                    $.ajax({
+                        url: url,
+                        method: method,
+                        dataType: 'json',
+                        data: data
+                    })
+                    .done(function(res){
+                        if (show !== -1) {
                             $("#records td#numbrecord").text(res.number_record);
                             $("#records td#typedoc").text(res.type_doc);
                             $("#records td#patientid").text(res.patient_id);
@@ -133,124 +146,149 @@
                             $("#records td#admission").text(res.admission_date);
                             $("#records td#triage").text(res.triage.triage);
                             $("#records td#egress").text(res.egress_date);
-                            $("#records td#state").text(res.parish.municipalities.states.state);
-                            $("#records td#municipality").text(res.parish.municipalities.municipality);
-                            $("#records td#parish").text(res.parish.parish);
-                            $("#records td#foreigncountry").text(res.foreign_country.foreign_country);
                             $("#records td#observation").text(res.observation);
                             $("#records td#user").text(res.user.name);
+                            if (res.parish) {
+                                $("#records td#state").text(res.parish.municipalities.states.state);
+                                $("#records td#municipality").text(res.parish.municipalities.municipality);
+                                $("#records td#parish").text(res.parish.parish);
+                            }
+                            if (res.foreign_country) {
+                                $("#records td#foreigncountry").text(res.foreign_country.foreign_country);
+                            }
                             $('#modal-showr').modal('toggle');
-                            
-                        });
+                        } else if (edit !== -1) {
+                            $('#modalform form').attr('action', update);
+                            $('#modalform form input[name=_method]').val('PUT');
+                            $('#modalform form')[0].reset();
+                            $('#modalform .modal-title').text('Editar Historia');
+                            $("#modalform #numbh").val(res.number_record);
+                            $("#modalform #typedoc").val(res.type_doc);
+                            $("#modalform #idpatient").val(res.patient_id);
+                            $("#modalform #name").val(res.name);
+                            $("#modalform #lastname").val(res.last_name);
+                            $("#modalform #sex").val(res.sex);
+                            $("#modalform #birthdate").val(res.birthdate);
+                            $("#modalform #admissiondate").val(res.admission_date);
+                            $("#modalform #triage").val(res.triage.id);
+                            $("#modalform #egressdate").val(res.egress_date);
+                            $("#modalform #observation").val(res.observation);
+                            $("#modalform #user").val(res.user.name);
+                            if (res.foreign_country) {
+                                $("#modalform #foreigncountry").val(res.foreign_country.id);
+                            }
+                            if (res.parish) {
+                                $("#modalform #state").val(res.parish.municipalities.states.id);
+                                selectMunicipalities(res.parish.municipalities.states.id);
+                                selectParishes(res.parish.municipalities.id);
+                                setTimeout(function(){
+                                    $("#modalform #municipality").val(res.parish.municipalities.id);
+                                    $("#modalform #parish").val(res.parish.id);
+                                }, 750);
+                            }
+
+                            $('#modalform').modal('toggle');
+                        } else if (destroy !== -1) {
+                            table.draw();
+                        }
                     });
-                }
-                },
-                language: {
-                "sProcessing": "Procesando...",
-                "sLengthMenu": "Mostrar _MENU_ registros",
-                "sZeroRecords": "No se encontraron resultados",
-                "sEmptyTable": "Ningún dato disponible en esta tabla",
-                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sSearch": "Buscar:",
-                "sUrl": "",
-                "sInfoThousands": ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                }
-                },
-                columns: [
-                {data:'number_record', name:'number_record'},
-                {data:'patient_id', name:'patient_id'},
-                {data:'name', name:'name'},
-                {data:'last_name', name:'last_name'},
-                {data:'admission_date', name:'admission_date'},
-                {
-                    data: 'action',
-                    searchable:false,
-                    sortable:false
-                }  
-                ]
-              });
-            $("#searchrec").click(function (e) {
-            e.preventDefault();
-            $("table#records-table tfoot").fadeToggle();
-              })
-                // Adicion de inputs a cada una de las columnas en tablas
-            $('#records-table tfoot th').each( function () {
-                var title = $('#records-table thead th').eq( $(this).index() ).text();
-                $(this).html( '<input type="text" style="width:100%; box-sizing:border-box;" class="form-control input-sm" placeholder="Buscar por '+title+'" />');
-            } );
-                // aplicando filtro en los inputs de la tabla
-            $("#records-table tfoot input").on( 'keyup change', function () {
-                table
-                    .column( $(this).parent().index()+':visible' )
-                    .search( this.value )
-                    .draw();
-            } );
-
-  
-
-       $('#addform').click(function(e){
-            e.preventDefault();
-            let href = $(this).attr('href');
-            $('#modalform form').attr('action', href);
-            $('#modalform form input[name=_method]').val('POST');
-            $('#modalform form')[0].reset();
-            $('#modalform .modal-title').text('Crear Historia');
-            $('#modalform').modal('toggle');
-       });
+                });
+}
+},
+language: {
+    "sProcessing": "Procesando...",
+    "sLengthMenu": "Mostrar _MENU_ registros",
+    "sZeroRecords": "No se encontraron resultados",
+    "sEmptyTable": "Ningún dato disponible en esta tabla",
+    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix": "",
+    "sSearch": "Buscar:",
+    "sUrl": "",
+    "sInfoThousands": ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst": "Primero",
+        "sLast": "Último",
+        "sNext": "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+},
+columns: [
+{data:'number_record', name:'number_record'},
+{data:'patient_id', name:'patient_id'},
+{data:'name', name:'name'},
+{data:'last_name', name:'last_name'},
+{data:'admission_date', name:'admission_date'},
+{
+    data: 'action',
+    searchable:false,
+    sortable:false
+}  
+]
+});
+$("#searchrec").click(function (e) {
+    e.preventDefault();
+    $("table#records-table tfoot").fadeToggle();
+})
+$('#records-table tfoot th').each( function () {
+    var title = $('#records-table thead th').eq( $(this).index() ).text();
+    $(this).html( '<input type="text" style="width:100%; box-sizing:border-box;" class="form-control input-sm" placeholder="Buscar por '+title+'" />');
+});
+$("#records-table tfoot input").on( 'keyup change', function () {
+    table
+    .column( $(this).parent().index()+':visible' )
+    .search( this.value )
+    .draw();
+});
 
 
-       $('#modalform form#formu').submit(function(e){
-            e.preventDefault();
-            let url = $(this).attr('action');
-            let data = $(this).serialize();
-            $.ajax({
-            url: url,
-            method: 'POST',
-            dataType: 'json',
-            data: data
-            })
-            .done(function(res){
-                console.log(res)
-                $('#modalform').modal('toggle');
-                $('#modalform form')[0].reset();
-                table.draw();
 
-            });
-       })
-
-       $('#typedoc').change(function(){
-         let value = $(this).val();
-        $('#foreigncountry, #idpatient').removeAttr('disabled');
-         
-         if(value == 'Venezolano/a'){
-
-            $('#foreigncountry').attr('disabled','');
-
-         } else if(value == 'N/p'){
-            $('#idpatient').attr('disabled','');
-            $('#foreigncountry').attr('disabled','');
-         }
-       })
+$('#addform').click(function(e){
+    e.preventDefault();
+    let href = $(this).attr('href');
+    $('#modalform form').attr('action', href);
+    $('#modalform form input[name=_method]').val('POST');
+    $('#modalform form')[0].reset();
+    $('#modalform .modal-title').text('Crear Historia');
+    $('#modalform').modal('toggle');
+});
 
 
- 
+$('#modalform form#formu').submit(function(e){
+    e.preventDefault();
+    let url = $(this).attr('action');
+    let data = $(this).serialize();
+    $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: 'json',
+        data: data
+    })
+    .done(function(res){
+        $('#modalform').modal('toggle');
+        $('#modalform form')[0].reset();
+        table.draw();
 
+    });
+})
+
+$('#typedoc').change(function(){
+    let value = $(this).val();
+    $('#foreigncountry, #idpatient').removeAttr('disabled');
+
+    if(value == 'Venezolano/a'){
+
+        $('#foreigncountry').attr('disabled','');
+
+    } else if(value == 'N/p'){
+        $('#idpatient').attr('disabled','');
+        $('#foreigncountry').attr('disabled','');
+    }
+})
 </script>
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-      Both of these plugins are recommended to enhance the
-      user experience. Slimscroll is required when using the
-      fixed layout. -->

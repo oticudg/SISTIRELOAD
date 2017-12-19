@@ -69,7 +69,8 @@ class IndexController extends Controller
         $index->user->name;
         $index->triage;
         $index->foreignCountry;
-        $index->parish->municipalities->states;
+        if ($index->parish)
+            $index->parish->municipalities->states;
         return response()->json($index);
     }
 
@@ -81,7 +82,13 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $index = Index::findOrFail($id);
+        $index->user->name;
+        $index->triage;
+        $index->foreignCountry;
+        if ($index->parish)
+            $index->parish->municipalities->states;
+        return response()->json($index);
     }
 
     /**
@@ -93,7 +100,10 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $index = Index::find($id);
+        $index->fill($request->all());
+        $index->save();
+         return response()->json($index);
     }
 
     /**
@@ -104,21 +114,23 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $index = Index::findOrFail($id);
+      $index->delete();
+      return response()->json($index);
     }
 
     public function apiIndex(){
-        $index = Index::all();
+        $index = Index::query();
 
         return Datatables::of($index)
         ->addColumn('action', function($index) {
             return  "<div class='btn-group col-md-offset-3'>
             
-            <a class='btn btn-info btn-sm show-index' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
+            <a class='btn btn-info btn-sm show-index' n='1' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
 
-            <a class='btn bg-yellow btn-sm edit-index' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
+            <a class='btn bg-yellow btn-sm edit-index' n='2' update='".route('indexes.update', $index->id)."' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
 
-            <a class='btn btn-sm btn-danger delete-index' href='".route('indexes.destroy', $index->id)."  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            <a class='btn btn-sm btn-danger destroy-index' href='".route('indexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
 
@@ -147,11 +159,4 @@ class IndexController extends Controller
         return response()->json($triage);
     }
 
-        // public function apiRecord(Datatables $datatables)
-    // {
-    //     return $datatables->eloquent(Index::query())
-    //                       ->addColumn('action', function ($record) {
-    //                           return "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' href='".route('users.edit', $record->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $record->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $record->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
-    //                     })->make(true);
-    // }  
 }

@@ -32,7 +32,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-id-card text-primary"></span>
                                              </div>
-                                             <input type="text" id="idpatient" name="idpatient" class="form-control" placeholder="Numero de cedula" required>
+                                             <input type="text" id="idpatient" name="idpatient" class="form-control" placeholder="Numero de cedula">
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Es necesario ingresar entre 5-8 digitos.</small>
                               </div>
@@ -92,7 +92,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-calendar text-primary"></span>
                                              </div> 
-                                              <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" required>
+                                              <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa">
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
 
@@ -133,7 +133,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-map text-primary"></span>
                                              </div> 
-                                             <select id="state" name="state" class="form-control" required>
+                                             <select id="state" name="state" class="form-control">
                                               <option value="" disabled selected>Seleccione el estado</option>
                                              </select>
                                           </div>
@@ -146,7 +146,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-map text-primary"></span>
                                              </div> 
-                                             <select id="municipality" name="municipality" class="form-control" required>
+                                             <select id="municipality" name="municipality" class="form-control">
                                                <option value='' disabled selected>Seleccione el municipio</option>
                                              </select>
                                           </div>
@@ -164,7 +164,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-map text-primary"></span>
                                              </div> 
-                                             <select id="parish" name="parish" class="form-control" required>
+                                             <select id="parish" name="parish" class="form-control">
                                                <option value='' disabled selected>Seleccione la parroquia</option>
                                              </select>
                                           </div>
