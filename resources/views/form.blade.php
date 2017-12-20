@@ -14,14 +14,14 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-file-text text-primary"></span>
                                              </div>
-                                             <input type="text" id="numbh" name="numbh" class="form-control" placeholder="Numero de historia" required> 
+                                             <input type="text" id="number_record" name="number_record" class="form-control" placeholder="Numero de historia" required> 
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Necesario ingresar por lo menos 7 digitos.</small>
                               </div>
                               <div class="form-group col-md-6">
                                 <div class="col-md-3">
-                                          <select id="typedoc" name="typedoc" class="form-control" required>
-                                              <option value="" selected disabled>CI</option>
+                                          <select id="type_doc" name="type_doc" class="form-control" required>
+                                              <option value="disabled" selected disabled>CI</option>
                                               <option value="Venezolano/a">V</option>
                                               <option value="Extranjero/a">E</option>
                                               <option value="N/p">N/p</option>
@@ -32,7 +32,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-id-card text-primary"></span>
                                              </div>
-                                             <input type="text" id="idpatient" name="idpatient" class="form-control" placeholder="Numero de cedula">
+                                             <input type="text" id="patient_id" name="patient_id" class="form-control" placeholder="Numero de cedula">
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Es necesario ingresar entre 5-8 digitos.</small>
                               </div>
@@ -60,7 +60,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-user-circle-o text-primary"></span>
                                              </div>
-                                             <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellidos" required>
+                                             <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Apellidos" required>
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Ingrese los apellidos del paciente.</small>
 
@@ -107,7 +107,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-calendar text-primary"></span>
                                              </div> 
-                                              <input type="text" class="form-control" id="admissiondate" name="admissiondate" placeholder="dd/mm/aaaa" required>
+                                              <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa" required>
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
                                     
@@ -118,7 +118,7 @@
                                             <div class="input-group-addon">
                                                 <span class="fa fa-calendar text-primary"></span>
                                              </div> 
-                                              <input type="text" class="form-control" id="egressdate" name="egressdate" placeholder="dd/mm/aaaa">
+                                              <input type="text" class="form-control" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa">
                                           </div>
                                           <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de egreso del paciente.</small>
                                     

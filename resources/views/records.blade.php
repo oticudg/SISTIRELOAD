@@ -14,6 +14,7 @@
                 <th>Cedula</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
+                <th>Nacimiento</th>
                 <th>Ingreso</th>
                 <th>Acciones</th>
             </tr>
@@ -25,6 +26,7 @@
                     <th>Cedula</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
+                    <th>Nacimiento</th>
                     <th>Ingreso</th>
                     <td></td>
                    

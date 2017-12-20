@@ -14,7 +14,6 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     $('.date').datepicker({
         format: "yyyy/mm/dd",
         todayBtn: true,
@@ -24,7 +23,6 @@
         autoclose: true,
         todayHighlight: true
     })
-
     $.ajax({
         url: location.origin + '/states',
         dataType: 'json'
@@ -34,12 +32,9 @@
             $("#state").append("<option value='"+r+"'>"+res[r]+"</option>");
         }
     });
-
-
     $("#state").change(function(){
         selectMunicipalities($(this).val());
     });
-
     function selectMunicipalities(id) {
         $.ajax({
             url: location.origin + '/municipalities',
@@ -73,11 +68,9 @@
             }
         });
     }
-
     $("#municipality").change(function(){
         selectParishes($(this).val());
     });
-
     $.ajax({
         url: location.origin + '/foreigncountries',
         dataType: 'json'
@@ -87,7 +80,6 @@
             $("#foreigncountry").append("<option value='"+r+"'>"+res[r]+"</option>");
         }
     });
-
     $.ajax({
         url: location.origin + '/triages',
         dataType: 'json'
@@ -97,7 +89,6 @@
             $("#triage").append("<option value='"+r+"'>"+res[r]+"</option>");
         }
     });
-
     var table = $('#records-table').DataTable({
         processing: true,
         serverSide: true,
@@ -136,16 +127,16 @@
                     })
                     .done(function(res){
                         if (show !== -1) {
-                            $("#records td#numbrecord").text(res.number_record);
-                            $("#records td#typedoc").text(res.type_doc);
-                            $("#records td#patientid").text(res.patient_id);
-                            $("#records td#names").text(res.name);
-                            $("#records td#lastnames").text(res.last_name);
+                            $("#records td#number_record").text(res.number_record);
+                            $("#records td#type_doc").text(res.type_doc);
+                            $("#records td#patient_id").text(res.patient_id);
+                            $("#records td#name").text(res.name);
+                            $("#records td#last_name").text(res.last_name);
                             $("#records td#sex").text(res.sex);
                             $("#records td#birthdate").text(res.birthdate);
-                            $("#records td#admission").text(res.admission_date);
+                            $("#records td#admission_date").text(res.admission_date);
                             $("#records td#triage").text(res.triage.triage);
-                            $("#records td#egress").text(res.egress_date);
+                            $("#records td#egress_date").text(res.egress_date);
                             $("#records td#observation").text(res.observation);
                             $("#records td#user").text(res.user.name);
                             if (res.parish) {
@@ -162,16 +153,16 @@
                             $('#modalform form input[name=_method]').val('PUT');
                             $('#modalform form')[0].reset();
                             $('#modalform .modal-title').text('Editar Historia');
-                            $("#modalform #numbh").val(res.number_record);
-                            $("#modalform #typedoc").val(res.type_doc);
-                            $("#modalform #idpatient").val(res.patient_id);
+                            $("#modalform #number_record").val(res.number_record);
+                            $("#modalform #type_doc").val(res.type_doc);
+                            $("#modalform #patient_id").val(res.patient_id);
                             $("#modalform #name").val(res.name);
-                            $("#modalform #lastname").val(res.last_name);
+                            $("#modalform #last_name").val(res.last_name);
                             $("#modalform #sex").val(res.sex);
                             $("#modalform #birthdate").val(res.birthdate);
-                            $("#modalform #admissiondate").val(res.admission_date);
+                            $("#modalform #admission_date").val(res.admission_date);
                             $("#modalform #triage").val(res.triage.id);
-                            $("#modalform #egressdate").val(res.egress_date);
+                            $("#modalform #egress_date").val(res.egress_date);
                             $("#modalform #observation").val(res.observation);
                             $("#modalform #user").val(res.user.name);
                             if (res.foreign_country) {
@@ -186,7 +177,6 @@
                                     $("#modalform #parish").val(res.parish.id);
                                 }, 750);
                             }
-
                             $('#modalform').modal('toggle');
                         } else if (destroy !== -1) {
                             table.draw();
@@ -224,6 +214,7 @@ columns: [
 {data:'patient_id', name:'patient_id'},
 {data:'name', name:'name'},
 {data:'last_name', name:'last_name'},
+{data:'birthdate', name:'birthdate'},
 {data:'admission_date', name:'admission_date'},
 {
     data: 'action',
@@ -246,9 +237,6 @@ $("#records-table tfoot input").on( 'keyup change', function () {
     .search( this.value )
     .draw();
 });
-
-
-
 $('#addform').click(function(e){
     e.preventDefault();
     let href = $(this).attr('href');
@@ -258,8 +246,6 @@ $('#addform').click(function(e){
     $('#modalform .modal-title').text('Crear Historia');
     $('#modalform').modal('toggle');
 });
-
-
 $('#modalform form#formu').submit(function(e){
     e.preventDefault();
     let url = $(this).attr('action');
@@ -274,21 +260,17 @@ $('#modalform form#formu').submit(function(e){
         $('#modalform').modal('toggle');
         $('#modalform form')[0].reset();
         table.draw();
-
     });
 })
-
-$('#typedoc').change(function(){
+$('#type_doc').change(function(){
     let value = $(this).val();
-    $('#foreigncountry, #idpatient').removeAttr('disabled');
-
+    $('#foreigncountry, #patient_id').removeAttr('disabled');
     if(value == 'Venezolano/a'){
-
         $('#foreigncountry').attr('disabled','');
-
     } else if(value == 'N/p'){
-        $('#idpatient').attr('disabled','');
+        $('#patient_id').attr('disabled','');
         $('#foreigncountry').attr('disabled','');
     }
+
 })
 </script>
