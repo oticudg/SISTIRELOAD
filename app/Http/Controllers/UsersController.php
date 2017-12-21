@@ -1,12 +1,9 @@
 <?php
-
 namespace Sisti\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Sisti\User;
 use Yajra\DataTables\DataTables;
 use Laracasts\Flash\Flash;
-
 class UsersController extends Controller
 {
     
@@ -19,7 +16,6 @@ class UsersController extends Controller
     {
          return view('users');
     }
-
     public function data(Datatables $datatables)
     {
         return $datatables->eloquent(User::query())
@@ -27,7 +23,6 @@ class UsersController extends Controller
                               return "<div class='btn-group col-md-offset-3'><a class='btn btn-info btn-sm' href='".route('users.edit', $user->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a><a class='btn bg-yellow btn-sm' href='".route('users.edit', $user->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a><a class='btn btn-sm btn-danger' href='".route('users.destroy', $user->id)."' onclick=\"confirm ('Desea borralo?')\"  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
                         })->make(true);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +32,6 @@ class UsersController extends Controller
     {
         return view('admin.users.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -54,7 +48,6 @@ class UsersController extends Controller
         Flash::success("Se ha registrado " . $user->name . "de forma exitosa!");
         return redirect()->route('users.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -65,7 +58,6 @@ class UsersController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -75,10 +67,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-
         return view('admin.users.edit')->with('user', $user);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -93,12 +83,9 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->type = $request->type;
         $user->save();
-
         Flash::success('El usuario' . $user->name . 'ha sido editado con exito');
         return redirect()->route('users.index');
-
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -109,7 +96,6 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-
         Flash::error('El usuario' . $user->name . 'ha sido elimanado');
         return redirect()->route('users.index');
     }

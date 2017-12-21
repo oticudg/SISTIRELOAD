@@ -127,6 +127,7 @@
                     })
                     .done(function(res){
                         if (show !== -1) {
+
                             $("#records td#number_record").text(res.number_record);
                             $("#records td#type_doc").text(res.type_doc);
                             $("#records td#patient_id").text(res.patient_id);
@@ -147,6 +148,7 @@
                             if (res.foreign_country) {
                                 $("#records td#foreigncountry").text(res.foreign_country.foreign_country);
                             }
+                            $('#modal-showr .modal-title').text('Historia completa');
                             $('#modal-showr').modal('toggle');
                         } else if (edit !== -1) {
                             $('#modalform form').attr('action', update);
@@ -175,14 +177,22 @@
                                 setTimeout(function(){
                                     $("#modalform #municipality").val(res.parish.municipalities.id);
                                     $("#modalform #parish").val(res.parish.id);
-                                }, 750);
+                                }, 900);
+                            }
+                            let value = $('#type_doc').val();
+                            $('#foreigncountry, #patient_id').removeAttr('disabled');
+                            if(value == 'Venezolano/a'){
+                                $('#foreigncountry').attr('disabled','');
+                            } else if(value == 'N/p'){
+                                $('#patient_id').attr('disabled','');
+                                $('#foreigncountry').attr('disabled','');
                             }
                             $('#modalform').modal('toggle');
                         } else if (destroy !== -1) {
                             table.draw();
                         }
                     });
-                });
+});
 }
 },
 language: {
@@ -261,8 +271,8 @@ $('#modalform form#formu').submit(function(e){
         $('#modalform form')[0].reset();
         table.draw();
     });
-})
-$('#type_doc').change(function(){
+});
+$('#type_doc').change(function (){
     let value = $(this).val();
     $('#foreigncountry, #patient_id').removeAttr('disabled');
     if(value == 'Venezolano/a'){
@@ -271,6 +281,5 @@ $('#type_doc').change(function(){
         $('#patient_id').attr('disabled','');
         $('#foreigncountry').attr('disabled','');
     }
-
 })
 </script>

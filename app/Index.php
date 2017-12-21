@@ -1,9 +1,6 @@
 <?php
-
 namespace Sisti;
-
 use Illuminate\Database\Eloquent\Model;
-
 class Index extends Model
 {
     protected $table = "indexes";
@@ -23,25 +20,20 @@ class Index extends Model
     'user_id',
     'parish_id'
     ];
-
     public function user()
     {
         return $this->belongsTo(User::class);
     } 
-
     public function triage()
     {
         return $this->belongsTo(Triage::class);
     }
-
     public function foreignCountry()
     {
         return $this->belongsTo(ForeignCountry::class, 'anotherc_id');
     } 
-
     public function parish()
     {
         return $this->belongsTo(Parish::class, 'parish_id');
     } 
-
 }
