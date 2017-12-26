@@ -14,9 +14,9 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-file-text text-purple"></span>
                                 </div>
-                                <input type="number" id="number_record" title="Ingrese solo numeros, entre 1-10 caracteres" name="number_record" class="form-control" placeholder="Numero de historia" required> 
+                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia" required> 
                             </div>
-                            <small id="emailHelp" class="form-text text-muted">Necesario ingresar por lo menos 1 digito.</small>
+                            <small id="emailHelp" class="form-text text-muted">Necesario ingresar por lo menos entre 1-11 digito.</small>
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-md-3">
@@ -32,9 +32,9 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-id-card text-purple"></span>
                                 </div>
-                                <input type="text" id="patient_id" name="patient_id"  class="form-control" placeholder="Numero de cedula">
+                                <input type="text" id="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control" placeholder="Numero de cedula">
                             </div>
-                            <small id="emailHelp" class="form-text text-muted">Es necesario ingresar entre 5-8 digitos.</small>
+                            <small id="emailHelp" class="form-text text-muted">Es necesario ingresar entre 4-8 digitos.</small>
                         </div>
                     </div>
                     <div class="row">
@@ -43,7 +43,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle text-purple"></span>
                                 </div>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombres" required>
+                                <input type="text" id="name" pattern="[A-Za-z]{1,70}" name="name" class="form-control" placeholder="Nombres" required>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">Ingrese los nombres del paciente.</small>
                         </div>
@@ -52,7 +52,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle-o text-purple"></span>
                                 </div>
-                                <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Apellidos" required>
+                                <input type="text" id="last_name" pattern="[A-Za-z]{1,70}" name="last_name" class="form-control" placeholder="Apellidos" required>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">Ingrese los apellidos del paciente.</small>
                         </div>
@@ -76,7 +76,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" required>
+                                <input type="text" id="birthdate" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" required>
                             </div>
                             <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
                         </div>
@@ -87,7 +87,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa">
+                                <input type="text" class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa">
                             </div>
                             <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
                         </div>
@@ -96,7 +96,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" class="form-control" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa">
+                                <input type="text" class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa">
                             </div>
                             <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de egreso del paciente.</small>
                         </div>

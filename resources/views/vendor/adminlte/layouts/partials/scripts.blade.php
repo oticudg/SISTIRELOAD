@@ -15,7 +15,7 @@
         }
     });
     $('.date').datepicker({
-        format: "yyyy/mm/dd",
+        format: "yyyy-mm-dd",
         todayBtn: true,
         clearBtn: true,
         language: "es",
@@ -177,7 +177,7 @@
                                 setTimeout(function(){
                                     $("#modalform #municipality").val(res.parish.municipalities.id);
                                     $("#modalform #parish").val(res.parish.id);
-                                }, 900);
+                                }, 1000);
                             }
                             let value = $('#type_doc').val();
                             $('#foreigncountry, #patient_id').removeAttr('disabled');

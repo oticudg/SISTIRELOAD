@@ -14,11 +14,11 @@ class CreateIndexesTable extends Migration
     public function up()
     {
         Schema::create('indexes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unique();
             $table->enum('type_doc',['Venezolano/a','Extranjero/a','N/p']);
-            $table->integer('patient_id')->unique()->nullable();
+            $table->string('patient_id')->unique()->nullable();
             $table->enum('sex',['Masculino','Femenino']);
-            $table->integer('number_record')->unique();
+            $table->string('number_record',11)->unique();
             $table->string('name');
             $table->string('last_name');
             $table->date('birthdate')->nullable();
