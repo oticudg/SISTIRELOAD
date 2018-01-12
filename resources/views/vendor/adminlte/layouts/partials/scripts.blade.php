@@ -22,19 +22,32 @@
         orientation: "bottom auto",
         autoclose: true,
         todayHighlight: true
-    })
+    });
     $.ajax({
         url: location.origin + '/states',
         dataType: 'json'
     })
-    .done(function(res){
-        for(var r in res) {
-            $("#state").append("<option value='"+r+"'>"+res[r]+"</option>");
+    .done(function (res) {
+        for (var r in res) {
+            $("#state").append("<option value='" + r + "'>" + res[r] + "</option>");
         }
     });
-    $("#state").change(function(){
+
+    /*funciones */
+    function disabledDocs($string) {
+        let value = $string;
+        $('#foreigncountry, #patient_id').removeAttr('disabled');
+        if (value == 'Venezolano/a') {
+            $('#foreigncountry').attr('disabled', '').val('');
+        } else if (value == 'N/p') {
+            $('#patient_id').attr('disabled', '').val('');
+            $('#foreigncountry').attr('disabled', '').val('');
+        }
+    }
+    $("#state").change(function () {
         selectMunicipalities($(this).val());
     });
+
     function selectMunicipalities(id) {
         $.ajax({
             url: location.origin + '/municipalities',
@@ -44,14 +57,15 @@
                 id: id
             }
         })
-        .done(function(res){
+        .done(function (res) {
             $("#municipality").html("<option value='' disabled selected>Ingrese el municipio</option>");
             $("#parish").html("<option value='' disabled selected>Ingrese la parroquia</option>");
-            for(var r in res) {
-                $("#municipality").append("<option value='"+r+"'>"+res[r]+"</option>");
+            for (var r in res) {
+                $("#municipality").append("<option value='" + r + "'>" + res[r] + "</option>");
             }
         });
     }
+
     function selectParishes(id) {
         $.ajax({
             url: location.origin + '/parishes',
@@ -61,49 +75,104 @@
                 id: id
             }
         })
-        .done(function(res){
+        .done(function (res) {
             $("#parish").html("<option value='' disabled selected>Ingrese la parroquia</option>");
-            for(var r in res) {
-                $("#parish").append("<option value='"+r+"'>"+res[r]+"</option>");
+            for (var r in res) {
+                $("#parish").append("<option value='" + r + "'>" + res[r] + "</option>");
             }
         });
     }
-    $("#municipality").change(function(){
+    $("#municipality").change(function () {
         selectParishes($(this).val());
     });
     $.ajax({
         url: location.origin + '/foreigncountries',
         dataType: 'json'
     })
-    .done(function(res){
-        for(var r in res) {
-            $("#foreigncountry").append("<option value='"+r+"'>"+res[r]+"</option>");
+    .done(function (res) {
+        for (var r in res) {
+            $("#foreigncountry").append("<option value='" + r + "'>" + res[r] + "</option>");
         }
     });
     $.ajax({
         url: location.origin + '/triages',
         dataType: 'json'
     })
-    .done(function(res){
-        for(var r in res) {
-            $("#triage").append("<option value='"+r+"'>"+res[r]+"</option>");
+    .done(function (res) {
+        for (var r in res) {
+            $("#triage").append("<option value='" + r + "'>" + res[r] + "</option>");
         }
     });
     var table = $('#records-table').DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
-        ajax:{
-            type:'POST',    
-            url:'api/index',
-            headers:{
-                'X-CSRF-TOKEN': '{{csrf_token()}}' 
+        render: true,
+        language: {
+            sProcessing: 'Procesando...',
+            sLengthMenu: 'Mostrar _MENU_ registros',
+            sZeroRecords: 'No se encontraron resultados',
+            sEmptyTable: 'Ningún dato disponible en esta tabla',
+            sInfo: 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+            sInfoEmpty: 'Mostrando registros del 0 al 0 de un total de 0 registros',
+            sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
+            sInfoPostFix: '',
+            sSearch: 'Buscar:',
+            sUrl: '',
+            sInfoThousands: ',',
+            sLoadingRecords: 'Cargando...',
+            oPaginate: {
+                sFirst: 'Primero',
+                sLast: 'Último',
+                sNext: 'Siguiente',
+                sPrevious: 'Anterior'
+            },
+            oAria: {
+                sSortAscending: ': Activar para ordenar la columna de manera ascendente',
+                sSortDescending: ': Activar para ordenar la columna de manera descendente'
+            }
+        },
+        columns: [{
+            data: 'number_record',
+            name: 'number_record'
+        },
+        {
+            data: 'patient_id',
+            name: 'patient_id'
+        },
+        {
+            data: 'name',
+            name: 'name'
+        },
+        {
+            data: 'last_name',
+            name: 'last_name'
+        },
+        {
+            data: 'birthdate',
+            name: 'birthdate'
+        },
+        {
+            data: 'admission_date',
+            name: 'admission_date'
+        },
+        {
+            data: 'action',
+            searchable: false,
+            sortable: false
+        }
+        ],
+        ajax: {
+            type: 'POST',
+            url: 'api/index',
+            headers: {
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
             },
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization');
             },
-            complete: function(){
-                $(".show-index, .edit-index, .destroy-index").click(function(e){
+            complete: function () {
+                $(".show-index, .edit-index, .destroy-index").click(function (e) {
                     e.preventDefault();
                     let url = $(this).attr('href');
                     let update = $(this).attr('update');
@@ -113,11 +182,11 @@
                     if (destroy !== -1) {
                         var method = 'POST';
                         var data = {
-                            '_method' : 'DELETE',
-                        }
+                            '_method': 'DELETE',
+                        };
                     } else {
                         var method = 'GET';
-                        var data = {}
+                        var data = {};
                     }
                     $.ajax({
                         url: url,
@@ -125,9 +194,8 @@
                         dataType: 'json',
                         data: data
                     })
-                    .done(function(res){
+                    .done(function (res) {
                         if (show !== -1) {
-
                             $("#records td#number_record").text(res.number_record);
                             $("#records td#type_doc").text(res.type_doc);
                             $("#records td#patient_id").text(res.patient_id);
@@ -174,80 +242,42 @@
                                 $("#modalform #state").val(res.parish.municipalities.states.id);
                                 selectMunicipalities(res.parish.municipalities.states.id);
                                 selectParishes(res.parish.municipalities.id);
-                                setTimeout(function(){
+                                setTimeout(function () {
                                     $("#modalform #municipality").val(res.parish.municipalities.id);
                                     $("#modalform #parish").val(res.parish.id);
                                 }, 1000);
                             }
-                            let value = $('#type_doc').val();
-                            $('#foreigncountry, #patient_id').removeAttr('disabled');
-                            if(value == 'Venezolano/a'){
-                                $('#foreigncountry').attr('disabled','');
-                            } else if(value == 'N/p'){
-                                $('#patient_id').attr('disabled','');
-                                $('#foreigncountry').attr('disabled','');
-                            }
+                            disabledDocs($('#type_doc').val());
                             $('#modalform').modal('toggle');
                         } else if (destroy !== -1) {
                             table.draw();
                         }
+
                     });
-});
-}
+                });
 },
-language: {
-    "sProcessing": "Procesando...",
-    "sLengthMenu": "Mostrar _MENU_ registros",
-    "sZeroRecords": "No se encontraron resultados",
-    "sEmptyTable": "Ningún dato disponible en esta tabla",
-    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-    "sInfoPostFix": "",
-    "sSearch": "Buscar:",
-    "sUrl": "",
-    "sInfoThousands": ",",
-    "sLoadingRecords": "Cargando...",
-    "oPaginate": {
-        "sFirst": "Primero",
-        "sLast": "Último",
-        "sNext": "Siguiente",
-        "sPrevious": "Anterior"
-    },
-    "oAria": {
-        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-    }
 },
-columns: [
-{data:'number_record', name:'number_record'},
-{data:'patient_id', name:'patient_id'},
-{data:'name', name:'name'},
-{data:'last_name', name:'last_name'},
-{data:'birthdate', name:'birthdate'},
-{data:'admission_date', name:'admission_date'},
-{
-    data: 'action',
-    searchable:false,
-    sortable:false
-}  
-]
 });
+
+$('#type_doc').change(function () {
+    disabledDocs($(this).val());
+});
+
 $("#searchrec").click(function (e) {
     e.preventDefault();
     $("table#records-table tfoot").fadeToggle();
-})
-$('#records-table tfoot th').each( function () {
-    var title = $('#records-table thead th').eq( $(this).index() ).text();
-    $(this).html( '<input type="text" style="width:100%; box-sizing:border-box;" class="form-control input-sm" placeholder="Buscar por '+title+'" />');
 });
-$("#records-table tfoot input").on( 'keyup change', function () {
+$('#records-table tfoot th').each(function () {
+    var title = $('#records-table thead th').eq($(this).index()).text();
+    $(this).html('<input type="text" style="width:100%; box-sizing:border-box;" class="form-control input-sm" placeholder="Buscar por ' + title + '" />');
+});
+$("#records-table tfoot input").on('keyup change', function () {
     table
-    .column( $(this).parent().index()+':visible' )
-    .search( this.value )
+    .column($(this).parent().index() + ':visible')
+    .search(this.value)
     .draw();
 });
-$('#addform').click(function(e){
+$('#addform').click(function (e) {
     e.preventDefault();
     let href = $(this).attr('href');
     $('#modalform form').attr('action', href);
@@ -256,7 +286,7 @@ $('#addform').click(function(e){
     $('#modalform .modal-title').text('Crear Historia');
     $('#modalform').modal('toggle');
 });
-$('#modalform form#formu').submit(function(e){
+$('#modalform form#formu').submit(function (e) {
     e.preventDefault();
     let url = $(this).attr('action');
     let data = $(this).serialize();
@@ -266,20 +296,10 @@ $('#modalform form#formu').submit(function(e){
         dataType: 'json',
         data: data
     })
-    .done(function(res){
+    .done(function () {
         $('#modalform').modal('toggle');
         $('#modalform form')[0].reset();
         table.draw();
     });
 });
-$('#type_doc').change(function (){
-    let value = $(this).val();
-    $('#foreigncountry, #patient_id').removeAttr('disabled');
-    if(value == 'Venezolano/a'){
-        $('#foreigncountry').attr('disabled','');
-    } else if(value == 'N/p'){
-        $('#patient_id').attr('disabled','');
-        $('#foreigncountry').attr('disabled','');
-    }
-})
 </script>

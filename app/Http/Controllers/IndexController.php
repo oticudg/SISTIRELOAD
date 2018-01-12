@@ -12,7 +12,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-       return view('records');
+        return view('records');
     }
     /**
      * Show the form for creating a new resource.
@@ -31,7 +31,7 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-      $data = [
+        $data = [
             'type_doc' => $request['type_doc'],
             'patient_id' => $request['patient_id'],
             'sex' => $request['sex'],
@@ -47,7 +47,7 @@ class IndexController extends Controller
             'triage_id' => $request['triage'],
             'parish_id' => $request['parish']
         ];
-         return Index::create($data);
+        return Index::create($data);
     }
     /**
      * Display the specified resource.
@@ -109,17 +109,18 @@ class IndexController extends Controller
       $index->delete();
       return response()->json($index);
     }
+
     public function apiIndex(){
-        $index = Index::query();
-        return Datatables::of($index)
-        ->addColumn('action', function($index) {
-            return  "<div class='btn-group col-md-offset-3'>
-            
-            <a class='btn btn-info btn-sm show-index' n='1' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
-            <a class='btn bg-yellow btn-sm edit-index' n='2' update='".route('indexes.update', $index->id)."' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
-            <a class='btn btn-sm btn-danger destroy-index' href='".route('indexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
-        })->make(true);
+        return Datatables::of(Index::query())
+        ->addColumn('action', function($index){
+            return  "<div class='btn-group btn-group-xs col-md-offset-3' role='toolbar'>
+            <a class='btn btn-info show-index' n='1' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
+            <a class='btn bg-yellow edit-index' n='2' update='".route('indexes.update', $index->id)."' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
+            <a class='btn btn-danger destroy-index' href='".route('indexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+        })
+        ->make(true);
     }
+
     public function getStates(){
         $state = State::pluck('state','id');
         return response()->json($state);
