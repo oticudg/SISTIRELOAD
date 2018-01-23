@@ -25,7 +25,7 @@
                     <span class="caret"></span></a>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="fa fa-cogs text-purple"></span> Cambiar contraseña</a></li>
+                        <li><a href="{{ url('changePassword') }}" data-toggle="modal"><span class="fa fa-cogs text-purple"></span> Cambiar contraseña</a></li>
                         <li class="divider"></li>
                         <li>
                             <a href="{{ url('/logout') }}"  id="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out text-purple"></span> Cerrar sesion</a>

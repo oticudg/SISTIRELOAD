@@ -1,8 +1,8 @@
 <?php
-
 Route::auth();
-
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('changePassword','Auth\ResetPasswordController@showChangePasswordForm');
+	Route::post('changePassword','Auth\ResetPasswordController@changePassword')->name('changePassword');
 	Route::any('states','IndexController@getStates');
 	Route::any('municipalities','IndexController@getMunicipalities');
 	Route::any('parishes','IndexController@getParishes');

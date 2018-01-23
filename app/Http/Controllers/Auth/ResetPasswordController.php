@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\JsonResponse;
+use Hash;
+use Auth;
 
 class ResetPasswordController extends Controller
 {
@@ -29,6 +31,36 @@ class ResetPasswordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function showChangePasswordForm(){
+        return view('changepassword');
+    }
+
+    public function changePassword(Request $request){
+ 
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            return redirect()->back()->with("error","
+                Su contraseña actual no coincide con la contraseña que proporcionó anteriormente. Intente de nuevo.");
+        }
+ 
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+            return redirect()->back()->with("error","La nueva contraseña no puede ser igual a la anterior. Por favor ingrese una diferente contraseña.");
+        }
+ 
+        $validatedData = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:6|confirmed',
+        ]);
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+ 
+        return redirect()->back()->with("success","Su contraseña ha sido cambiada con exito!");
+ 
+    }
     public function reset(Request $request)
     {
         $this->validate($request, $this->rules(), $this->validationErrorMessages());
@@ -106,8 +138,9 @@ class ResetPasswordController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+    
+    // public function __construct()
+    // {
+    //     $this->middleware('guest');
+    // }
 }

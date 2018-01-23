@@ -37,11 +37,11 @@
     function disabledDocs($string) {
         let value = $string;
         $('#foreigncountry, #patient_id').removeAttr('disabled');
+        console.log($string);
         if (value == 'Venezolano/a') {
             $('#foreigncountry').attr('disabled', '').val('');
         } else if (value == 'N/p') {
-            $('#patient_id').attr('disabled', '').val('');
-            $('#foreigncountry').attr('disabled', '').val('');
+            $('#foreigncountry, #patient_id').attr('disabled', '').val('');
         }
     }
     $("#state").change(function () {
@@ -108,6 +108,7 @@
         serverSide: true,
         responsive: true,
         render: true,
+        searching: false,
         language: {
             sProcessing: 'Procesando...',
             sLengthMenu: 'Mostrar _MENU_ registros',
@@ -167,6 +168,14 @@
             url: 'api/index',
             headers: {
                 'X-CSRF-TOKEN': '{{csrf_token()}}'
+            },
+            data: function (d) {
+                d.number_record = $('input[name=number_record]').val();
+                d.patient_id = $('input[name=patient_id]').val();
+                d.name = $('input[name=name]').val();
+                d.last_name = $('input[name=last_name]').val();
+                d.birthdate = $('input[name=birthdate]').val();
+                d.admission_date = $('input[name=admission_date]').val();
             },
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization');
@@ -258,24 +267,16 @@
 },
 },
 });
-
 $('#type_doc').change(function () {
     disabledDocs($(this).val());
 });
-
+$('#searchrec2').on('submit', function(e) {
+        table.draw();
+        e.preventDefault();
+});
 $("#searchrec").click(function (e) {
     e.preventDefault();
-    $("table#records-table tfoot").fadeToggle();
-});
-$('#records-table tfoot th').each(function () {
-    var title = $('#records-table thead th').eq($(this).index()).text();
-    $(this).html('<input type="text" style="width:100%; box-sizing:border-box;" class="form-control input-sm" placeholder="Buscar por ' + title + '" />');
-});
-$("#records-table tfoot input").on('keyup change', function () {
-    table
-    .column($(this).parent().index() + ':visible')
-    .search(this.value)
-    .draw();
+    $("div#header2").fadeToggle();
 });
 $('#addform').click(function (e) {
     e.preventDefault();
