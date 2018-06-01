@@ -14,17 +14,18 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-file-text text-purple"></span>
                                 </div>
-                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia" required> 
+                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia" {{-- required --}}> 
                             </div>
                             <small id="number_record" class="form-text text-muted">Necesario ingresar por lo menos entre 1-11 digito.</small>
                         </div>
                         <div class="form-group col-md-6">
-                            <div class="col-md-3">
-                                <select id="type_doc" name="type_doc" class="form-control" title="Seleccione un elemento de la lista" required>
-                                    <option value="" selected disabled>CI</option>
-                                    <option value="Venezolano/a">V</option>
-                                    <option value="Extranjero/a">E</option>
-                                    <option value="N/p">N/p</option>
+                            <div class="col-md-4" style="padding: 0; margin: 0;">
+                                <select id="type_doc" name="type_doc" class="form-control" title="Seleccione un elemento de la lista" {{-- required --}}>
+                                    <option value="" selected disabled>Documento</option>
+                                    <option value="Venezolano/a">Venezolano/a</option>
+                                    <option value="Extranjero/a">Extranjero/a</option>
+                                    <option value="C/s">Caso-Social</option>
+                                    <option value="N/p">No posee</option>
                                 </select>
                                 <small id="type_doc" class="form-text text-muted">Documento</small>
                             </div>
@@ -34,7 +35,7 @@
                                 </div>
                                 <input type="text" id="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control" placeholder="Numero de cedula">
                             </div>
-                            <small id="patient_id" class="form-text text-muted">Es necesario ingresar entre 4-8 digitos.</small>
+                            <small id="patient_id" class="form-text text-muted">Cedula.</small>
                         </div>
                     </div>
                     <div class="row">
@@ -43,7 +44,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle text-purple"></span>
                                 </div>
-                                <input type="text" id="name" pattern="[A-Za-z]{1,70}" name="name" class="form-control" placeholder="Nombres" required>
+                                <input type="text" id="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control" placeholder="Nombres" {{-- required --}}>
                             </div>
                             <small id="name" class="form-text text-muted">Ingrese los nombres del paciente.</small>
                         </div>
@@ -52,7 +53,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle-o text-purple"></span>
                                 </div>
-                                <input type="text" id="last_name" pattern="[A-Za-z]{1,70}" name="last_name" class="form-control" placeholder="Apellidos" required>
+                                <input type="text" id="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control" placeholder="Apellidos" {{-- required --}}>
                             </div>
                             <small id="last_name" class="form-text text-muted">Ingrese los apellidos del paciente.</small>
                         </div>
@@ -63,7 +64,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-venus-mars text-purple"></span>
                                 </div>
-                                <select id="sex" name="sex" class="form-control" required>
+                                <select id="sex" name="sex" class="form-control" {{-- required --}}>
                                     <option value="" selected disabled>Seleccione un sexo</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
@@ -76,7 +77,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" id="birthdate" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" required>
+                                <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" {{-- required --}}>
                             </div>
                             <small id="birthdate" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
                         </div>
@@ -87,7 +88,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa">
+                                <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa">
                             </div>
                             <small id="admission_date" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
                         </div>
@@ -96,7 +97,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa">
+                                <input type="text" class="form-control" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa">
                             </div>
                             <small id="egress_date" class="form-text text-muted">Ingrese la fecha de egreso del paciente.</small>
                         </div>
@@ -107,7 +108,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-map text-purple"></span>
                                 </div>
-                                <select id="state" name="state" class="form-control" required>
+                                <select id="state" name="state" class="form-control" {{-- required --}}>
                                     <option value="" disabled selected>Seleccione el estado</option>
                                 </select>
                             </div>
@@ -118,7 +119,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-map text-purple"></span>
                                 </div>
-                                <select id="municipality" name="municipality" class="form-control" required>
+                                <select id="municipality" name="municipality" class="form-control" {{-- required --}}>
                                     <option value='' disabled selected>Seleccione el municipio</option>
                                 </select>
                             </div>
@@ -131,7 +132,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-map text-purple"></span>
                                 </div>
-                                <select id="parish" name="parish" class="form-control" required>
+                                <select id="parish" name="parish" class="form-control" {{-- required --}}>
                                     <option value='' disabled selected>Seleccione la parroquia</option>
                                 </select>
                             </div>
@@ -155,16 +156,16 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-venus-mars text-purple"></span>
                                 </div>
-                                <select id="triage" name="triage" class="form-control" required>
+                                <select id="triage_id" name="triage_id" class="form-control" {{-- required --}}>
                                     <option value="" selected disabled>Seleccione un triaje</option>
                                 </select>
                             </div>
-                            <small id="triage" class="form-text text-muted">Ingrese el area de llegada del paciente.</small>
+                            <small id="triage_id" class="form-text text-muted">Ingrese el area de llegada del paciente.</small>
                         </div>
                         <div class="form-group col-md-6"> 
                             <textarea id="observation" name="observation" class="form-control" placeholder="Observaciones">
                             </textarea>
-                            <small  class="form-text text-muted" id="observation">Ingrese obervaciones acerca del paciente o su historia.</small>
+                            <small  class="form-text text-muted" id="observation">Ingrese algunas obervaciones acerca del paciente o su historia de ser necesario.</small>
                         </div>
                     </div>
                     <div class="modal-footer">

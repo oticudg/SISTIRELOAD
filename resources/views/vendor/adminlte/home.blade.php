@@ -15,7 +15,7 @@
                         <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Historias</span>
-                            <span class="info-box-number">41,410</span>
+                            <span class="info-box-number">{{ $recordscount }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
@@ -28,7 +28,7 @@
                         <span class="info-box-icon"><i class="fa fa-stethoscope"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Triaje pediatrico</span>
-                            <span class="info-box-number">23,159</span>
+                            <span class="info-box-number">{{ $pediatric }}</span>
                             <!-- The progress section is optional -->
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
@@ -42,7 +42,7 @@
                         <span class="info-box-icon"><i class="fa fa-medkit"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text" >Triaje adulto</span>
-                            <span class="info-box-number">34,139</span>
+                            <span class="info-box-number">{{ $adult }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
@@ -55,7 +55,7 @@
                         <span class="info-box-icon"><i class="fa fa-user-md"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Hospitalizacion</span>
-                            <span class="info-box-number">15,039</span>
+                            <span class="info-box-number">{{ $hospitalization }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
@@ -68,7 +68,7 @@
                         <span class="info-box-icon"><i class="fa fa-hospital-o"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Reten</span>
-                            <span class="info-box-number">25,999</span>
+                            <span class="info-box-number">{{ $catch }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>

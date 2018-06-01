@@ -15,7 +15,7 @@ class CreateIndexesTable extends Migration
     {
         Schema::create('indexes', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->enum('type_doc',['Venezolano/a','Extranjero/a','N/p']);
+            $table->enum('type_doc',['Venezolano/a','Extranjero/a','C/s','N/p']);
             $table->string('patient_id')->unique()->nullable();
             $table->enum('sex',['Masculino','Femenino']);
             $table->string('number_record',11)->unique();

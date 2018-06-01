@@ -2,7 +2,10 @@
 namespace Sisti\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Yajra\Datatables\Services\DataTable;
 use Sisti\ { Index, State, Municipality, Parish, ForeignCountry, Triage };
+use Sisti\Http\Requests\{IndexCreateRequest, IndexEditRequest};
+use Carbon\Carbon;
 class IndexController extends Controller
 {
     /**
@@ -29,7 +32,7 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IndexCreateRequest $request)
     {
         $data = [
             'type_doc' => $request['type_doc'],
@@ -44,7 +47,7 @@ class IndexController extends Controller
             'anotherc_id' => $request['anotherc_id'],
             'observation' => $request['observation'],
             'user_id' => Auth()->user()->id,
-            'triage_id' => $request['triage'],
+            'triage_id' => $request['triage_id'],
             'parish_id' => $request['parish']
         ];
         return Index::create($data);
@@ -88,12 +91,12 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(IndexEditRequest $request, $id)
     {
         $index = Index::find($id);
         $index->fill($request->all());
         $index->parish_id=$request->parish;
-        $index->triage_id=$request->triage;
+        $index->triage_id=$request->triage_id;
         $index->save();
         return response()->json($index);
     }

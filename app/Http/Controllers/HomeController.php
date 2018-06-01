@@ -9,6 +9,7 @@ namespace Sisti\Http\Controllers;
 
 use Sisti\Http\Requests;
 use Illuminate\Http\Request;
+use Sisti\Index;
 
 /**
  * Class HomeController
@@ -33,6 +34,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('adminlte::home');
+        $recordscount = Index::count();
+        $pediatric = Index::where('triage_id', '=', 1)->count();
+        $adult = Index::where('triage_id', '=', 2)->count();
+        $hospitalization = Index::where('triage_id', '=', 3)->count();
+        $catch = Index::where('triage_id', '=', 4)->count();
+        return view('adminlte::home', compact('recordscount','pediatric','adult','hospitalization','catch'));
     }
 }

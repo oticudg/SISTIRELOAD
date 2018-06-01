@@ -1,9 +1,9 @@
 <header class="main-header">
     <a href="{{ url('/home') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>S</b>R</span>
+        <span class="logo-mini"><img src="/img/sisti32x32.png"></span>
         <!-- logo for regular state and mobile devices -->
-        <img src="/img/sistim.png">
+        <img src="/img/sistinav.png">
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">

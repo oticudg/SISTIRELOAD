@@ -8,6 +8,18 @@
 <script src="{{ url ('/plugins/moment.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/validator.min.js') }}"></script>
 <script src="{{ url ('/plugins/sweetalert2.min.js') }}"></script>
+<script src="{{ url ('/plugins/buttons.server-side.js') }}"></script>
+
+<script src="{{ url ('/plugins/dataTables.buttons.min.js') }}"></script>
+<script src="{{ url ('/plugins/buttons.bootstrap.min.js') }}"></script>
+<script src="{{ url ('/plugins/buttons.colVis.min.js') }}"></script>
+<script src="{{ url ('/plugins/buttons.flash.min.js') }}"></script>
+<script src="{{ url ('/plugins/jszip.min.js') }}"></script>
+<script src="{{ url ('/plugins/pdfmake.min.js') }}"></script>
+<script src="{{ url ('/plugins/vfs_fonts.min.js') }}"></script>
+<script src="{{ url ('/plugins/buttons.html5.min.js') }}"></script>
+<script src="{{ url ('/plugins/buttons.print.min.js') }}"></script>
+
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -32,12 +44,10 @@
             $("#state").append("<option value='" + r + "'>" + res[r] + "</option>");
         }
     });
-
     /*funciones */
     function disabledDocs($string) {
         let value = $string;
         $('#foreigncountry, #patient_id').removeAttr('disabled');
-        console.log($string);
         if (value == 'Venezolano/a') {
             $('#foreigncountry').attr('disabled', '').val('');
         } else if (value == 'N/p') {
@@ -47,7 +57,6 @@
     $("#state").change(function () {
         selectMunicipalities($(this).val());
     });
-
     function selectMunicipalities(id) {
         $.ajax({
             url: location.origin + '/municipalities',
@@ -65,7 +74,6 @@
             }
         });
     }
-
     function selectParishes(id) {
         $.ajax({
             url: location.origin + '/parishes',
@@ -100,14 +108,24 @@
     })
     .done(function (res) {
         for (var r in res) {
-            $("#triage").append("<option value='" + r + "'>" + res[r] + "</option>");
+            $("#triage_id").append("<option value='" + r + "'>" + res[r] + "</option>");
         }
     });
     var table = $('#records-table').DataTable({
         processing: true,
         serverSide: true,
+        initComplete : function () {
+        table.buttons().container()
+           .appendTo( $('#records-table .col-sm-6:eq(0)'));
+        },
         responsive: true,
         render: true,
+        dom: 'Bfrtip',
+        buttons: [
+
+            'copy', 'csv', 'excel', 'pdf', 'print',
+
+        ],
         searching: false,
         language: {
             sProcessing: 'Procesando...',
@@ -160,7 +178,9 @@
         {
             data: 'action',
             searchable: false,
-            sortable: false
+            sortable: false,
+            orderable: false,
+            render: null
         }
         ],
         ajax: {
@@ -182,6 +202,7 @@
             },
             complete: function () {
                 $(".show-index, .edit-index, .destroy-index").click(function (e) {
+                    restoreMsgHis();
                     e.preventDefault();
                     let url = $(this).attr('href');
                     let update = $(this).attr('update');
@@ -240,10 +261,9 @@
                             $("#modalform #sex").val(res.sex);
                             $("#modalform #birthdate").val(res.birthdate);
                             $("#modalform #admission_date").val(res.admission_date);
-                            $("#modalform #triage").val(res.triage.id);
+                            $("#modalform #triage_id").val(res.triage.id);
                             $("#modalform #egress_date").val(res.egress_date);
                             $("#modalform #observation").val(res.observation);
-                            $("#modalform #user").val(res.user.name);
                             if (res.foreign_country) {
                                 $("#modalform #foreigncountry").val(res.foreign_country.id);
                             }
@@ -271,8 +291,8 @@ $('#type_doc').change(function () {
     disabledDocs($(this).val());
 });
 $('#searchrec2').on('submit', function(e) {
-        table.draw();
-        e.preventDefault();
+    table.draw();
+    e.preventDefault();
 });
 $("#searchrec").click(function (e) {
     e.preventDefault();
@@ -280,6 +300,7 @@ $("#searchrec").click(function (e) {
 });
 $('#addform').click(function (e) {
     e.preventDefault();
+    restoreMsgHis();
     let href = $(this).attr('href');
     $('#modalform form').attr('action', href);
     $('#modalform form input[name=_method]').val('POST');
@@ -289,6 +310,7 @@ $('#addform').click(function (e) {
 });
 $('#modalform form#formu').submit(function (e) {
     e.preventDefault();
+    restoreMsgHis();
     let url = $(this).attr('action');
     let data = $(this).serialize();
     $.ajax({
@@ -297,10 +319,47 @@ $('#modalform form#formu').submit(function (e) {
         dataType: 'json',
         data: data
     })
-    .done(function () {
+    .done(function (response) {
         $('#modalform').modal('toggle');
         $('#modalform form')[0].reset();
         table.draw();
+    })
+    .fail(function (errors) {
+        errors = errors.responseJSON.errors;
+        for (error in errors) {
+            $('small#' + error).html(errors[error][0]).removeClass('text-muted').addClass('text-red');
+        }
     });
+    restoreMsgHis();
 });
+
+function restoreMsgHis() {
+    let msg = {
+    number_record: 'Necesario ingresar por lo menos entre 1-11 digito.',
+    type_doc: 'Documento',
+    patient_id: 'Es necesario ingresar entre 4-8 digitos.',
+    name: 'Ingrese los nombres del paciente.',
+    last_name: 'Ingrese los apellidos del paciente.',
+    sex: 'Ingrese el sexo del paciente.',
+    birthdate: 'Ingrese la fecha de nacimiento del paciente.',
+    admission_date: 'Ingrese la fecha de ingreso del paciente.',
+    egress_date: 'Ingrese la fecha de egreso del paciente.',
+    state: 'Ingrese el estado de donde proviene del paciente.',
+    municipality: 'Ingrese el municipio de donde proviene del paciente.',
+    parishe: 'Ingrese la parroquia de donde proviene del paciente.',
+    foreigncountry: 'Ingrese el pais de donde proviene paciente.',
+    triage_id: 'Ingrese el area de llegada del paciente.',
+    observations: 'Ingrese algunas obervaciones acerca del paciente o su historia de ser necesario.'
+    }
+    let $form = $('#modalform');
+    let inputs = $('#modalform form').find('input, select');
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].id) {
+            let $element = $form.find('small#'+inputs[i].id)[0]
+            $($element).text('')
+            $($element).text(msg[inputs[i].id]).removeClass('text-red')
+        }
+    }
+
+}
 </script>

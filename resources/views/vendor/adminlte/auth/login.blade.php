@@ -2,11 +2,11 @@
 @section('htmlheader_title')
 @endsection
 @section('content')
-<body class="hold-transition login-page">
+<body class="hold-transition bg-purple">
     <div id="app" v-cloak>
         <div class="login-box">
             <div class="login-logo">
-                {{--       <img src="/img/SISTI.png"> --}}
+                      <img src="/img/sistilog.png">
             </div>
             @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -18,7 +18,7 @@
                 </ul>
             </div>
             @endif
-            <div class="login-box-body">
+            <div class="login-box-body box">
                 <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
                 <form action="{{ url('/login') }}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-xs-offset-3">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat"><span class="fa fa-sign-in"></span> {{ trans('adminlte_lang::message.buttonsign') }}</button>
+                            <button type="submit" class="btn bg-purple btn-block btn-flat"><span class="fa fa-sign-in"></span> {{ trans('adminlte_lang::message.buttonsign') }}</button>
                         </div>
                     </div>
                 </form>

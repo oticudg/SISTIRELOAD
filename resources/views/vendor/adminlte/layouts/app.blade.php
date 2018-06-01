@@ -9,18 +9,17 @@
                 @include('adminlte::layouts.partials.mainheader')
                 @include('adminlte::layouts.partials.sidebar')
                 <div class="content-wrapper">
-                    {{-- 
-                    @include('adminlte::layouts.partials.contentheader') --}}
+                    
+                {{--     @include('adminlte::layouts.partials.contentheader') --}}
                     <section class="content">
                         @yield('main-content')
                     </section>
                 </div>
-                @include('adminlte::layouts.partials.controlsidebar')
                 @include('adminlte::layouts.partials.footer')
             </div>
         </div>
         @section('scripts')
         @include('adminlte::layouts.partials.scripts')
-        @show
+        @show      
     </body>
 </html>
