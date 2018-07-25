@@ -8,8 +8,8 @@
 <script src="{{ url ('/plugins/moment.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/validator.min.js') }}"></script>
 <script src="{{ url ('/plugins/sweetalert2.min.js') }}"></script>
-<script src="{{ url ('/plugins/buttons.server-side.js') }}"></script>
 
+<script src="{{ url ('/plugins/buttons.server-side.js') }}"></script>
 <script src="{{ url ('/plugins/dataTables.buttons.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.bootstrap.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.colVis.min.js') }}"></script>
@@ -114,10 +114,6 @@
     var table = $('#records-table').DataTable({
         processing: true,
         serverSide: true,
-        initComplete : function () {
-        table.buttons().container()
-           .appendTo( $('#records-table .col-sm-6:eq(0)'));
-        },
         responsive: true,
         render: true,
         dom: 'Bfrtip',

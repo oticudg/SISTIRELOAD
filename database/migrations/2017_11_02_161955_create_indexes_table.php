@@ -22,10 +22,10 @@ class CreateIndexesTable extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->date('birthdate')->nullable();
-            $table->date('admission_date');
+            $table->date('admission_date')->nullable();
             $table->date('egress_date')->nullable();
             $table->integer('triage_id')->unsigned();
-            $table->foreign('triage_id')->references('id')->on('triages');
+            $table->foreign('triage_id')->references('id')->on('triages')->nullable();
             $table->integer('anotherc_id')->unsigned()->nullable();
             $table->foreign('anotherc_id')->references('id')->on('foreigncountries');
             $table->text('observation')->nullable();

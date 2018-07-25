@@ -28,12 +28,12 @@ class IndexCreateRequest extends FormRequest
             'type_doc' => 'required',
             'patient_id' => 'required|unique:indexes|min:4|max:8',
             'sex' => 'required',
-            'name' => 'required|alpha|min:1|max:70',
+            'name' => 'required|alpha_spaces|min:1|max:70',
             'last_name' => 'required|alpha|min:1|max:70',
-            'birthdate' => 'required|date_format:"d-m-Y"',
+            'birthdate' => 'required|date_format:"Y-m-d"',
             'triage_id' => 'required',
-            'admission_date' => 'date_format:"d-m-Y"',
-            'egress_date' => 'date_format:"d-m-Y"',
+            'admission_date' => 'date_format:"Y-m-d"',
+            'egress_date' => 'date_format:"Y-m-d"',
         ];
     }
 

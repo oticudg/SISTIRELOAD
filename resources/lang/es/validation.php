@@ -15,6 +15,7 @@ return [
     'after'                => 'El campo :attribute debe ser una fecha posterior a :date <span class="fa fa-close"></span>',
     'after_or_equal'       => 'El campo :attribute debe ser una fecha posterior o igual a :date <span class="fa fa-close"></span>',
     'alpha'                => 'El campo :attribute sólo puede contener letras <span class="fa fa-close"></span>',
+    'alpha_spaces'                => 'El campo :attribute sólo puede contener letras <span class="fa fa-close"></span>',
     'alpha_dash'           => 'El campo :attribute sólo puede contener letras, números y guiones (a-z, 0-9, -_) <span class="fa fa-close"></span>',
     'alpha_num'            => 'El campo :attribute sólo puede contener letras y números <span class="fa fa-close"></span>',
     'array'                => 'El campo :attribute debe ser un array <span class="fa fa-close"></span>',
