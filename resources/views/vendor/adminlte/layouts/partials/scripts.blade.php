@@ -1,4 +1,4 @@
-<script src="{{ url ('/plugins/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
+<script src="{{ url ('/plugins/jquery-3.3.1.min.js') }}" type="text/javascript"></script>
 <script src="{{ url (mix('/js/app.js')) }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/pace.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/jquery.dataTables.min.js') }}" type="text/javascript"></script>
@@ -8,18 +8,15 @@
 <script src="{{ url ('/plugins/moment.min.js') }}" type="text/javascript"></script>
 <script src="{{ url ('/plugins/validator.min.js') }}"></script>
 <script src="{{ url ('/plugins/sweetalert2.min.js') }}"></script>
-
 <script src="{{ url ('/plugins/buttons.server-side.js') }}"></script>
 <script src="{{ url ('/plugins/dataTables.buttons.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ url ('/plugins/buttons.colVis.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.flash.min.js') }}"></script>
 <script src="{{ url ('/plugins/jszip.min.js') }}"></script>
 <script src="{{ url ('/plugins/pdfmake.min.js') }}"></script>
 <script src="{{ url ('/plugins/vfs_fonts.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.html5.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.print.min.js') }}"></script>
-
 <script type="text/javascript">
     $.ajaxSetup({
         headers: {
@@ -114,14 +111,35 @@
     var table = $('#records-table').DataTable({
         processing: true,
         serverSide: true,
-        responsive: true,
         render: true,
+        // lengthMenu: [
+        //     [ 10, 25, 50, -1 ],
+        //     [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        // ],
         dom: 'Bfrtip',
-        buttons: [
-
-            'copy', 'csv', 'excel', 'pdf', 'print',
-
+        lengthMenu: [
+            [ 10, 25, 50, 100, 1000, -1 ],
+            [ '10 filas', '25 filas', '50 filas', '100 filas', '1000 filas', 'Mostrar Todo' ]
         ],
+        buttons : [
+            {
+                extend : 'collection',
+                text:      '<span class="fa fa-download"></span> Exportar',
+                className: 'btn-xs bg-purple',
+                init: function(api, node, config) 
+                {
+                    $(node).removeClass('btn-default')
+                },
+                buttons : [
+                    'copy',
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'print',
+                    'pageLength',
+                ],
+                } 
+            ],
         searching: false,
         language: {
             sProcessing: 'Procesando...',

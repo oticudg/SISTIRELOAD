@@ -122,28 +122,28 @@ class IndexController extends Controller
             <a class='btn btn-danger destroy-index' href='".route('indexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })
         ->filter(function ($query) use ($request) {
-            if ($request->has('number_record')) {
-                $query->where('number_record', 'like', "%{$request->get('number_record')}%");
+            if ($request->number_record != '') {
+                $query->where('number_record', 'like', "%{$request->number_record}%");
             }
 
-            if ($request->has('patient_id')) {
-                $query->where('patient_id', 'like', "%{$request->get('patient_id')}%");
+            if ($request->patient_id != '') {
+                $query->where('patient_id', 'like', "%{$request->patient_id}%");
             }
 
-            if ($request->has('name')) {
-                $query->where('name', 'like', "%{$request->get('name')}%");
+            if ($request->name != '') {
+                $query->where('name', 'like', "%{$request->name}%");
             }
 
-            if ($request->has('last_name')) {
-                $query->where('last_name', 'like', "%{$request->get('last_name')}%");
+            if ($request->last_name != '') {
+                $query->where('last_name', 'like', "%{$request->last_name}%");
             }
 
-            if ($request->has('birthdate')) {
-                $query->where('birthdate', 'like', "%{$request->get('birthdate')}%");
+            if ($request->birthdate != '') {
+                $query->where('birthdate', 'like', "%{$request->birthdate}%");
             }
 
-            if ($request->has('admission_date')) {
-                $query->where('admission_date', 'like', "%{$request->get('admission_date')}%");
+            if ($request->admission_date != '') {
+                $query->where('admission_date', 'like', "%{$request->admission_date}%");
             }
         })
         ->make(true);

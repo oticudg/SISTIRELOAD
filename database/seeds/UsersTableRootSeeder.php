@@ -15,6 +15,7 @@ class UsersTableRootSeeder extends Seeder
             'name' => 'Root Sahum',
             'email' => 'root@sahum.gob.ve',
             'password' => bcrypt(env('ADMIN_PWD', '123456')),
+            'type' => 'admin',
             'remember_token' => str_random(10),
         ]);
     }
