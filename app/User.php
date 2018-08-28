@@ -11,7 +11,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'last_name', 'email', 'password','type',
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -23,5 +23,22 @@ class User extends Authenticatable
     ];
     public function indexes(){
         return $this->hasMany(Index::class);
+    }
+
+    /**
+     * Obtener los roles que posee el usuario.
+     */
+    public function roles()
+    {
+        // pertenece a muchas
+        return $this->belongsToMany(Sisti\Permisologia\Role::class);
+    }
+
+    /**
+     * Obtener los permisos que posee el usuario.
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany(Sisti\Permisologia\Permission::class);
     } 
 }

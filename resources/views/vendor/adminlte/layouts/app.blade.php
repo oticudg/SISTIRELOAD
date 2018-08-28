@@ -9,7 +9,6 @@
                 @include('adminlte::layouts.partials.mainheader')
                 @include('adminlte::layouts.partials.sidebar')
                 <div class="content-wrapper">
-                    
                 {{--     @include('adminlte::layouts.partials.contentheader') --}}
                     <section class="content">
                         @yield('main-content')

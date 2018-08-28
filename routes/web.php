@@ -10,5 +10,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::any('triages','IndexController@getTriages');
 	Route::get('/','Auth\LoginController@ShowLoginForm');
 	Route::resource('indexes', 'IndexController');
-	Route::any('api/index', 'IndexController@apiIndex');			
+	Route::any('api/index', 'IndexController@apiIndex');
+	Route::resource('user', 'UserController', [
+	'except' => ['create']
+	]);
+	Route::get('api/user', 'UserController@apiUser')->name('api.user');
+
 });

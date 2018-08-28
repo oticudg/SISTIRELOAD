@@ -6,11 +6,11 @@
 <div class="container-fluid spark-screen">
     <div class="row">
         <div class="col-md-12">
-            <div class="box skin-purple-light">
-                <div class="box-body">
-                    <div class="box-header with-border text-center">
+            <div class="box">
+                <div class="box-header with-border text-center">
                         <h3 class="box-title">Bienvenido a Sisti Remasterizado</h3>
                     </div>
+                <div class="box-body"> 
                     <div class="info-box bg-blue" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
                         <div class="info-box-content">

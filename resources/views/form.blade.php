@@ -14,7 +14,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-file-text text-purple"></span>
                                 </div>
-                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia" {{-- required --}}> 
+                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia" required> 
                             </div>
                             <small id="number_record" class="form-text text-muted">Necesario ingresar por lo menos entre 1-11 digito.</small>
                         </div>
@@ -77,7 +77,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" {{-- required --}}>
+                                <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" readonly {{-- required --}}>
                             </div>
                             <small id="birthdate" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
                         </div>
@@ -88,7 +88,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa">
+                                <input type="text" class="form-control" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa" readonly>
                             </div>
                             <small id="admission_date" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
                         </div>
@@ -97,7 +97,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" class="form-control" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa">
+                                <input type="text" class="form-control" id="egress_date" name="egress_date" placeholder="dd/mm/aaaa" readonly>
                             </div>
                             <small id="egress_date" class="form-text text-muted">Ingrese la fecha de egreso del paciente.</small>
                         </div>
