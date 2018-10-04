@@ -26,14 +26,12 @@ class IndexCreateRequest extends FormRequest
         return [
             'number_record' => 'required',
             'type_doc' => 'required',
-            'patient_id' => 'required|unique:indexes|min:4|max:8',
+            'patient_id' => 'unique:indexes|min:4|max:8',
             'sex' => 'required',
             'name' => 'required|alpha_spaces|min:1|max:70',
             'last_name' => 'required|alpha|min:1|max:70',
             'birthdate' => 'required|date_format:"Y-m-d"',
             'triage_id' => 'required',
-            'admission_date' => 'date_format:"Y-m-d"',
-            'egress_date' => 'date_format:"Y-m-d"',
         ];
     }
 

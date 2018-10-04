@@ -19,26 +19,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
-    public function indexes(){
+
+    public function indexes()
+    {
         return $this->hasMany(Index::class);
     }
 
-    /**
-     * Obtener los roles que posee el usuario.
-     */
-    public function roles()
+    public function admin()
     {
-        // pertenece a muchas
-        return $this->belongsToMany(Sisti\Permisologia\Role::class);
+        return $this->type === 'admin';
     }
 
-    /**
-     * Obtener los permisos que posee el usuario.
-     */
-    public function permissions()
-    {
-        return $this->belongsToMany(Sisti\Permisologia\Permission::class);
-    } 
 }

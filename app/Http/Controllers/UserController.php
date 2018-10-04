@@ -80,6 +80,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
         $user = User::findOrFail($id);
         $user->update($input);
         return response()->json([
@@ -115,16 +116,4 @@ class UserController extends Controller
         })->make(true);
     }
 
-    // public function apiUser()
-    // {
-    //     $user = User::all();
- 
-    //     return Datatables::of($user)
-    //         ->addColumn('action', function($contact){
-    //             return '<a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-    //                    '<a onclick="editForm('. $contact->id .')" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-    //                    '<a onclick="deleteData('. $contact->id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-    //         })
-    //         ->rawColumns(['show_photo', 'action'])->make(true);
-    // }
 }

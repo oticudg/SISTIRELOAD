@@ -238,6 +238,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
+
+
     ],
 
 ];

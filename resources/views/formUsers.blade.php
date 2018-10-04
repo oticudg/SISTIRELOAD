@@ -50,7 +50,7 @@
                                     <option value="member">Miembro</option>
                                 </select>
                             </div>
-                            <small id="type" class="form-text text-muted help-block with-errors">Ingrese el sexo del paciente.</small>
+                            <small id="type" class="form-text text-muted help-block with-errors">Seleccione el tipo de usuario.</small>
                         </div>
 
                         <div class="form-group col-md-6">

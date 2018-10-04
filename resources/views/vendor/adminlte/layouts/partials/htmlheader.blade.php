@@ -11,6 +11,5 @@
     <link href="{{ asset('/plugins/pace-theme-minimal.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/plugins/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/plugins/sweetalert2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/plugins/font-awesome.min.css') }}" rel="stylesheet" type="text/css" /> 
 </head>

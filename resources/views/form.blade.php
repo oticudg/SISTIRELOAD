@@ -14,7 +14,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-file-text text-purple"></span>
                                 </div>
-                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia" required> 
+                                <input type="text" id="number_record" title="Ingrese solo numeros, entre 1-11 caracteres" name="number_record" pattern="[0-9]{1,11}" class="form-control" placeholder="Numero de historia"> 
                             </div>
                             <small id="number_record" class="form-text text-muted">Necesario ingresar por lo menos entre 1-11 digito.</small>
                         </div>
@@ -33,7 +33,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-id-card text-purple"></span>
                                 </div>
-                                <input type="text" id="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control" placeholder="Numero de cedula">
+                                <input type="text" id="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control" placeholder="Numero de cedula" required>
                             </div>
                             <small id="patient_id" class="form-text text-muted">Cedula.</small>
                         </div>
@@ -44,7 +44,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle text-purple"></span>
                                 </div>
-                                <input type="text" id="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control" placeholder="Nombres" {{-- required --}}>
+                                <input type="text" id="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control" placeholder="Nombres">
                             </div>
                             <small id="name" class="form-text text-muted">Ingrese los nombres del paciente.</small>
                         </div>
@@ -53,7 +53,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle-o text-purple"></span>
                                 </div>
-                                <input type="text" id="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control" placeholder="Apellidos" {{-- required --}}>
+                                <input type="text" id="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control" placeholder="Apellidos">
                             </div>
                             <small id="last_name" class="form-text text-muted">Ingrese los apellidos del paciente.</small>
                         </div>
@@ -64,7 +64,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-venus-mars text-purple"></span>
                                 </div>
-                                <select id="sex" name="sex" class="form-control" {{-- required --}}>
+                                <select id="sex" name="sex" class="form-control">
                                     <option value="" selected disabled>Seleccione un sexo</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
@@ -77,7 +77,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar text-purple"></span>
                                 </div>
-                                <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" readonly {{-- required --}}>
+                                <input type="text" id="birthdate" name="birthdate" class="form-control" placeholder="dd/mm/aaaa" readonly>
                             </div>
                             <small id="birthdate" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
                         </div>
@@ -108,7 +108,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-map text-purple"></span>
                                 </div>
-                                <select id="state" name="state" class="form-control" {{-- required --}}>
+                                <select id="state" name="state" class="form-control">
                                     <option value="" disabled selected>Seleccione el estado</option>
                                 </select>
                             </div>
@@ -119,7 +119,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-map text-purple"></span>
                                 </div>
-                                <select id="municipality" name="municipality" class="form-control" {{-- required --}}>
+                                <select id="municipality" name="municipality" class="form-control">
                                     <option value='' disabled selected>Seleccione el municipio</option>
                                 </select>
                             </div>
@@ -132,7 +132,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-map text-purple"></span>
                                 </div>
-                                <select id="parish" name="parish" class="form-control" {{-- required --}}>
+                                <select id="parish" name="parish" class="form-control">
                                     <option value='' disabled selected>Seleccione la parroquia</option>
                                 </select>
                             </div>
@@ -156,7 +156,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-venus-mars text-purple"></span>
                                 </div>
-                                <select id="triage_id" name="triage_id" class="form-control" {{-- required --}}>
+                                <select id="triage_id" name="triage_id" class="form-control">
                                     <option value="" selected disabled>Seleccione un triaje</option>
                                 </select>
                             </div>

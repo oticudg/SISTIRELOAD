@@ -18,5 +18,25 @@
 <script src="{{ url ('/plugins/buttons.html5.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.print.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('js/custom.min.js') }}"></script>
 <script src="{{ asset('/plugins/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('js/custom.min.js') }}"></script>
+<script src="{{ url ('/plugins/loader.js') }}"></script>
+@if(isset($sex)) 
+<script type="text/javascript">
+   var analytics = <?php echo $sex; ?>
+
+   google.charts.load('current', {'packages':['corechart']});
+
+   google.charts.setOnLoadCallback(drawChart);
+
+   function drawChart()
+   {
+    var data = google.visualization.arrayToDataTable(analytics);
+    var options = {
+     title : 'Porcentaje de historias por sexo del paciente.'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    chart.draw(data, options);
+   }
+</script>
+@endif
