@@ -40,3 +40,42 @@
    }
 </script>
 @endif
+@if(isset($triage)) 
+<script type="text/javascript">
+   var analytics = <?php echo $triage; ?>
+
+   google.charts.load('current', {'packages':['corechart']});
+
+   google.charts.setOnLoadCallback(drawChart);
+
+   function drawChart()
+   {
+    var data = google.visualization.arrayToDataTable(analytics);
+    var options = {
+     title : 'Porcentaje de historias por triaje de entrada.'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    chart.draw(data, options);
+   }
+</script>
+@endif
+
+@if(isset($doc)) 
+<script type="text/javascript">
+   var analytics = <?php echo $doc; ?>
+
+   google.charts.load('current', {'packages':['corechart']});
+
+   google.charts.setOnLoadCallback(drawChart);
+
+   function drawChart()
+   {
+    var data = google.visualization.arrayToDataTable(analytics);
+    var options = {
+     title : 'Porcentaje por tipo paciente.'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    chart.draw(data, options);
+   }
+</script>
+@endif

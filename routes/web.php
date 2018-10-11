@@ -14,6 +14,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::any('api/index', 'IndexController@apiIndex');
 
 	Route::get('/sexchart', 'LaravelGoogleGraph@sex');
+	Route::get('/triagechart', 'LaravelGoogleGraph@triage');
+	Route::get('/docchart', 'LaravelGoogleGraph@doc');
 
 	Route::group(['middleware' => ['auth','admin']], function () {
 	Route::resource('user', 'UserController', [

@@ -29,7 +29,7 @@ class IndexCreateRequest extends FormRequest
             'patient_id' => 'unique:indexes|min:4|max:8',
             'sex' => 'required',
             'name' => 'required|alpha_spaces|min:1|max:70',
-            'last_name' => 'required|alpha|min:1|max:70',
+            'last_name' => 'required|alpha_spaces|min:1|max:70',
             'birthdate' => 'required|date_format:"Y-m-d"',
             'triage_id' => 'required',
         ];

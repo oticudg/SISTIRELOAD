@@ -5,7 +5,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title text-center" id="exampleModalLabel"></h4>
             </div>
-            <form id="form-user" method="post" data-toggle="validator" enctype="multipart/form-data">
+            <form id="formuser" method="post" data-toggle="validator" enctype="multipart/form-data">
                 {{ csrf_field() }} {{ method_field('POST') }}
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">

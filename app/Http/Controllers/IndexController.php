@@ -116,10 +116,13 @@ class IndexController extends Controller
     public function apiIndex(Request $request){
         return Datatables::of(Index::query())
         ->addColumn('action', function($index){
-            return  "<div class='btn-group btn-group-xs col-md-offset-3' role='toolbar'>
+            $buttons = "<div class='btn-group btn-group-xs col-md-offset-3' role='toolbar'>
             <a class='btn btn-info show-index' n='1' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
-            <a class='btn bg-yellow edit-index' n='2' update='".route('indexes.update', $index->id)."' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
-            <a class='btn btn-danger destroy-index' href='".route('indexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            <a class='btn bg-yellow edit-index' n='2' update='".route('indexes.update', $index->id)."' href='".route('indexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>";
+            if (\Auth::user()->admin()) {
+            $buttons .= "<a class='btn btn-danger destroy-index' href='".route('indexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a>";
+            }
+            return $buttons .= "</div>";
         })
         ->filter(function ($query) use ($request) {
             if ($request->number_record != '') {

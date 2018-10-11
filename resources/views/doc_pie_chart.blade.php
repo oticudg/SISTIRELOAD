@@ -2,7 +2,7 @@
 @section('main-content')
 <div class="box box-warning">
     <div class="box-header with-border text-center">
-        <h3 class="box-title">Estadistica por sexo</h3>
+        <h3 class="box-title">Estadistica por tipo de paciente</h3>
     </div>
     <div class="box-body col-md-offset-3">
     	<div id="pie_chart" style="width:750px; height:450px;">

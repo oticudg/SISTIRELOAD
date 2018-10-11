@@ -25,28 +25,20 @@ $factory->define(Sisti\User::class, function (Faker\Generator $faker) {
 });
 
 // $factory->define(Sisti\Index::class, function (Faker\Generator $faker) {
-// static $password;
 
-// return [
-// 'user_id' => 1,
-// 'title' => $faker->sentence(10),
-// 'body' => $faker->sentence(30),
-// ];
-
-// 			'type_doc' => ,
-//             'patient_id' => ,
-//             'sex' => ,
-//             'number_record' => ,
-//             'name' => ,
-//             'last_name' => ,
-//             'birthdate' => ,
-//             'admission_date' => ,
-//             'egress_date' => ,
-//             'anotherc_id' => ,
-//             'observation' => ,
-//             'user_id' => ,
-//             'triage_id' => ,
-//             'parish_id' => $request['parish'],
-
-
+//     return [    
+//         'type_doc' => $faker->randomElement($array = array ('Venezolano/a','C/s','N/p')),
+//         'patient_id' => $faker->unique()->numberBetween($min = 1000, $max = 9999999),
+//         'sex' => $faker->randomElement($array = array ('Masculino','Femenino')),
+//         'number_record' => $faker->unique()->numberBetween($min = 1, $max = 9999999),
+//         'name' => $faker->name,
+//         'last_name' => $faker->name,
+//         'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now'),
+//         'triage_id' => $faker->numberBetween($min = 1, $max = 4),
+//         'admission_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+//         'egress_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+//         'observation' => $faker->text($maxNbChars = 200) ,
+//         'user_id' => $faker->numberBetween($min = 1, $max = 20),
+//         'parish_id' => $faker->numberBetween($min = 1, $max = 2),
+//     ];
 // });

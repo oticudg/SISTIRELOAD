@@ -154,7 +154,7 @@
                         <div class="form-group col-md-6">
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <span class="fa fa-venus-mars text-purple"></span>
+                                    <span class="fa fa-hospital-o text-purple"></span>
                                 </div>
                                 <select id="triage_id" name="triage_id" class="form-control">
                                     <option value="" selected disabled>Seleccione un triaje</option>
@@ -163,7 +163,7 @@
                             <small id="triage_id" class="form-text text-muted">Ingrese el area de llegada del paciente.</small>
                         </div>
                         <div class="form-group col-md-6"> 
-                            <textarea id="observation" name="observation" class="form-control" placeholder="Observaciones">
+                            <textarea style="resize: none;" id="observation" name="observation" class="form-control" placeholder="Observaciones">
                             </textarea>
                             <small  class="form-text text-muted" id="observation">Ingrese algunas obervaciones acerca del paciente o su historia de ser necesario.</small>
                         </div>

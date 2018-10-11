@@ -13,10 +13,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ url('sexchart') }}"><i class="fa fa-venus-mars text-purple"></i> Por sexo</a></li>
-                <li><a href="{{ url('triagechart') }}"><i class="fa fa-circle-o"></i> Morris</a></li>
-                <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+                <li><a href="{{ url('sexchart') }}"><i class="fa fa-venus-mars text-purple"></i> Sexo del paciente</a></li>
+                <li><a href="{{ url('triagechart') }}"><i class="fa fa-hospital-o text-teal"></i> Triaje de entrada</a></li>
+                <li><a href="{{ url('docchart') }}"><i class="fa fa-wheelchair text-red"></i> Tipo de paciente</a></li>
               </ul>
             </li>
             @if(Auth::user()->admin())

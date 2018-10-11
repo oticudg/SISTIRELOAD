@@ -36,7 +36,7 @@ class IndexEditRequest extends FormRequest
             'egress_date' => 'date_format:"Y-m-d"',
             'state' => 'required',
             'municipality' => 'required',
-            'parish' => 'required',
+            
         ];
     }
 
