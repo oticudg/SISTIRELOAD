@@ -2,13 +2,14 @@
 @section('main-content')
 <div class="box box-info">
     <div class="box-header with-border text-center">
-        <h3 class="box-title">Viejas historias registradas</h3>
+        <h3 class="box-title">Nuevas historias registradas</h3>
     </div>
      <div class="box-header">
-        <a class="btn bg-purple btn-xs btn-flat" data-toggle="tooltip" data-placement="top" title="Buscar por campo" id="searchrec"><span class="fa fa-search"></span> Busqueda avanzada</a>
+        <a id="addform" href="{{ route('newindexes.store')  }}" class="btn bg-purple btn-xs" data-toggle="tooltip" data-placement="top" title="Crear historia"><span class="fa fa-plus"></span> Registrar</a>
+        <a class="btn bg-purple btn-xs" data-toggle="tooltip" data-placement="top" title="Buscar por campo" id="searchrec"><span class="fa fa-search"></span> Busqueda avanzada</a>
     </div>
     <div class="box-header with-border" id="header2" style="display: none">
-        <form id="searchrec1" method="POST" role="form">
+        <form id="searchrec2" method="POST" role="form">
                <div class="row"> 
                  <div class="form-group col-md-3">
                             <div class="input-group">
@@ -58,20 +59,30 @@
                             <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
                         </div>
                         <div class="form-group col-md-3">
-                         <button type="submit" class="btn bg-purple btn-sm btn-flat" data-toggle="tooltip" data-placement="top" title="Buscar filtros"><span class="fa fa-search"></span> Buscar</button>
+                            <div class="input-group date" data-provide="datepicker">
+                                <div class="input-group-addon">
+                                    <span class="fa fa-calendar text-purple"></span>
+                                </div>
+                                <input type="text" class="form-control input-sm" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa" readonly>
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
+                        </div>
+                        <div class="form-group col-md-3">
+                         <button type="submit" class="btn bg-purple btn-sm" data-toggle="tooltip" data-placement="top" title="Buscar filtros"><span class="fa fa-search"></span> Buscar</button>
                         </div>
                  </div>        
         </form>
     </div>
     <div class="box-body table-responsive">
-        <table id="records-table" class="table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
+        <table id="new-records-table" class="table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th># Historia</th>
+                    <th>N# Historia</th>
                     <th>Cedula</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Nacimiento</th>
+                    <th>Ingreso</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

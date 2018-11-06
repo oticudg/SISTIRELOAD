@@ -8,7 +8,7 @@ class LaravelGoogleGraph extends Controller
 {
     function sex()
     {
-     $data = DB::table('indexes')
+     $data = DB::table('new_indexes')
        ->select(
         DB::raw('sex as sex'),
         DB::raw('count(*) as number'))
@@ -25,8 +25,8 @@ class LaravelGoogleGraph extends Controller
 
     function triage()
     {
-     $data = DB::table('indexes')
-       ->join('triages', 'indexes.id', '=', 'triages.id')
+     $data = DB::table('new_indexes')
+       ->join('triages', 'new_indexes.id', '=', 'triages.id')
        ->select(
         DB::raw('triages.triage as triage'),
         DB::raw('count(*) as number'))
@@ -42,7 +42,7 @@ class LaravelGoogleGraph extends Controller
 
     function doc()
     {
-     $data = DB::table('indexes')
+     $data = DB::table('new_indexes')
        ->select(
         DB::raw('type_doc as doc'),
         DB::raw('count(*) as number'))

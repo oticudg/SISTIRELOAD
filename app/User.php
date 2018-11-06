@@ -21,15 +21,12 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
     ];
-
-    public function indexes()
+    public function new_indexes()
     {
-        return $this->hasMany(Index::class);
+        return $this->hasMany(NewIndex::class);
     }
-
     public function admin()
     {
         return $this->type === 'admin';
     }
-
 }

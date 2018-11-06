@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndexesTable extends Migration
+class CreateNewIndexesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateIndexesTable extends Migration
      */
     public function up()
     {
-        Schema::create('indexes', function (Blueprint $table) {
+        Schema::create('new_indexes', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->enum('type_doc',['Venezolano/a','Extranjero/a','C/s','N/p'])->nullable();
             $table->string('patient_id')->unique()->nullable();
@@ -44,6 +44,6 @@ class CreateIndexesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indexes');
+        Schema::dropIfExists('new_indexes');
     }
 }

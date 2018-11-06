@@ -8,4 +8,7 @@ class Triage extends Model
     public function indexes(){
         return $this->hasMany(Index::class);
     } 
+    public function new_indexes(){
+        return $this->hasMany(NewIndex::class);
+    } 
 }

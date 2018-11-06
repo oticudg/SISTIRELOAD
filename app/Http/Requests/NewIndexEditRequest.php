@@ -4,7 +4,7 @@ namespace Sisti\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexCreateRequest extends FormRequest
+class NewIndexEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class IndexCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+       return true;
     }
 
     /**
@@ -26,15 +26,17 @@ class IndexCreateRequest extends FormRequest
         return [
             'number_record' => 'required',
             'type_doc' => 'required',
-            'patient_id' => 'unique:indexes|min:4|max:8',
+            'patient_id' => 'min:4|max:8',
+            'state' =>'required',
+            'municipality' => 'required',
+            'parish' => 'required',
             'sex' => 'required',
             'name' => 'required|alpha_spaces|min:1|max:70',
             'last_name' => 'required|alpha_spaces|min:1|max:70',
             'birthdate' => 'required|date_format:"Y-m-d"',
-            'triage_id' => 'required',
+            'triage_id' => 'required', 
         ];
     }
-
     public function attributes()
     {
         return [
@@ -44,10 +46,11 @@ class IndexCreateRequest extends FormRequest
             'sex' => 'sexo',
             'name' => 'nombres',
             'last_name' => 'apellidos',
+            'state' => 'estado',
+            'municipality' => 'municipio',
+            'parish' => 'parroquia',
             'birthdate' => 'fecha de nacimiento',
             'triage_id' => 'triaje',
-            'admission_date' => 'fecha de ingreso',
-            'egress_date' => 'fecha de egreso',
         ];
     }
 }

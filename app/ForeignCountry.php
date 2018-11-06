@@ -5,7 +5,7 @@ class ForeignCountry extends Model
 {
    	protected $table = "foreigncountries";
     protected $fillable = ['foreign_country'];
-    public function indexes(){
-        return $this->hasMany(Index::class);
-    } 
+    public function new_indexes(){
+        return $this->hasMany(NewIndex::class);
+    }  
 }

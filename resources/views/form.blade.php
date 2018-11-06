@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-md-4" style="padding: 0; margin: 0;">
-                                <select id="type_doc" name="type_doc" class="form-control" title="Seleccione un elemento de la lista" {{-- required --}}>
+                                <select id="type_doc" name="type_doc" class="form-control" title="Seleccione un elemento de la lista">
                                     <option value="" selected disabled>Documento</option>
                                     <option value="Venezolano/a">Venezolano/a</option>
                                     <option value="Extranjero/a">Extranjero/a</option>
