@@ -44,7 +44,7 @@ class NewIndexController extends Controller
             'birthdate' => $request['birthdate'],
             'admission_date' => $request['admission_date'],
             'egress_date' => $request['egress_date'],
-            'anotherc_id' => $request['anotherc_id'],
+            'anotherc_id' => $request['foreigncountry'],
             'observation' => $request['observation'],
             'user_id' => Auth()->user()->id,
             'triage_id' => $request['triage_id'],
@@ -96,6 +96,7 @@ class NewIndexController extends Controller
         $index = NewIndex::find($id);
         $index->fill($request->all());
         $index->parish_id=$request->parish;
+        $index->anotherc_id=$request->foreigncountry;
         $index->triage_id=$request->triage_id;
         $index->save();
         return response()->json($index);

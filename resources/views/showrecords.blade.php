@@ -52,12 +52,12 @@
                                 <td class="" id="foreigncountry"></td>
                             </tr>
                             <tr>
-                                <th>Observacion del paciente:</th>
-                                <td id="observation" colspan="3"></td>
-                            </tr>
-                            <tr>
                                 <th>Usuario registrador:</th>
                                 <td id="user" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <th>Observacion del paciente:</th>
+                                <td id="observation" colspan="3"></td>
                             </tr>
                         </tbody>
                     </table>
