@@ -6,7 +6,7 @@
     <div id="app" v-cloak>
         <div class="login-box">
             <div class="login-logo">
-                      <img src="/img/sistilog.png">
+                <img src="/img/sistilog.png">
             </div>
             @if (count($errors) > 0)
             <div class="alert alert-danger">

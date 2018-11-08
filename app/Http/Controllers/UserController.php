@@ -1,7 +1,6 @@
 <?php
 
 namespace Sisti\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Yajra\Datatables\Services\DataTable;
@@ -9,33 +8,18 @@ use Sisti\ { User };
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('users');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+    //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-     public function store(Request $request)
+    public function store(Request $request)
     {
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
@@ -47,36 +31,17 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+    //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return $user;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $input = $request->all();
@@ -89,12 +54,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -111,8 +70,8 @@ class UserController extends Controller
         return Datatables::of($user)
         ->addColumn('action', function($user){
             return  "<div class='btn-group btn-group-xs col-md-offset-3' role='toolbar'>
-            <a class='btn bg-yellow' onclick='editForm(". $user->id .")' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
-            <a class='btn btn-danger' onclick='deleteData(". $user->id .")'  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            <a class='btn bg-yellow btn-flat' onclick='editForm(". $user->id .")' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
+            <a class='btn btn-danger btn-flat' onclick='deleteData(". $user->id .")'  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
 

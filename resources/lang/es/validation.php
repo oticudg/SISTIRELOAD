@@ -1,15 +1,6 @@
 <?php
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
+
     'accepted'             => ':attribute debe ser aceptado <span class="fa fa-close"></span>',
     'active_url'           => ':attribute no es una URL válida <span class="fa fa-close"></span>',
     'after'                => ':attribute debe ser una fecha posterior a :date <span class="fa fa-close"></span>',
@@ -85,30 +76,12 @@ return [
     'unique'               => 'El elemento :attribute ya está en uso <span class="fa fa-close"></span>',
     'uploaded'             => 'El elemento :attribute falló al subir <span class="fa fa-close"></span>',
     'url'                  => 'El formato de :attribute no corresponde con el de una URL válida <span class="fa fa-close"></span>',
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
-    |
-    */
+
     'attributes' => [],
 ];

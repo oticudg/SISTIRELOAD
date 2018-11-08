@@ -169,8 +169,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
-                        <button type="submit" class="btn bg-purple"><span class="fa fa-send"></span> Enviar</button>
+                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
+                        <button type="submit" class="btn bg-purple btn-flat"><span class="fa fa-send"></span> Enviar</button>
                     </div>
                 </form>
             </div>

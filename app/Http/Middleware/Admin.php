@@ -1,7 +1,6 @@
 <?php
 
 namespace Sisti\Http\Middleware;
-
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
@@ -13,7 +12,7 @@ class Admin
     {
         $this->auth = $auth;
     }
-    
+
     public function handle($request, Closure $next)
     {
         if ($this->auth->user()->admin())
@@ -22,9 +21,7 @@ class Admin
         }
         else
         {
-            
             return response()->view('vendor.adminlte.errors.401');
-
         }   
     }
 }

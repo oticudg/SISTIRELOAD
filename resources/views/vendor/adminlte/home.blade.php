@@ -8,8 +8,8 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border text-center">
-                        <h3 class="box-title">Bienvenido a Sisti Remasterizado</h3>
-                    </div>
+                    <h3 class="box-title">Bienvenido a Sisti Remasterizado</h3>
+                </div>
                 <div class="box-body"> 
                     <div class="info-box bg-blue" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
@@ -20,7 +20,7 @@
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                            Historias creadas.
+                                Historias creadas.
                             </span>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                            Entradas por triaje pediatrico.
+                                Entradas por triaje pediatrico.
                             </span>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                            Entradas por triaje adulto.
+                                Entradas por triaje adulto.
                             </span>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                            Entradas por hospitalizacion.
+                                Entradas por hospitalizacion.
                             </span>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                            Entradas por reten.
+                                Entradas por reten.
                             </span>
                         </div>
                     </div>

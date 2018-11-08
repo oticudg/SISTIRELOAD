@@ -1,10 +1,12 @@
 <?php
+
 namespace Sisti\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Yajra\Datatables\Services\DataTable;
 use Sisti\ {Index, Triage};
 use Carbon\Carbon;
+
 class IndexController extends Controller
 {
 
@@ -50,6 +52,7 @@ class IndexController extends Controller
         })
         ->make(true);
     }
+    
     public function getTriages(){
         $triage = Triage::pluck('triage','id');
         return response()->json($triage);

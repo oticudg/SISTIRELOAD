@@ -1,26 +1,16 @@
 <?php
 
 namespace Sisti\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
 
 class NewIndexEditRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
-       return true;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
@@ -37,6 +27,7 @@ class NewIndexEditRequest extends FormRequest
             'triage_id' => 'required', 
         ];
     }
+
     public function attributes()
     {
         return [

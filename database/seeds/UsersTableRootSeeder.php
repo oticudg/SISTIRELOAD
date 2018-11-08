@@ -4,14 +4,10 @@ use Illuminate\Database\Seeder;
 
 class UsersTableRootSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
-         DB::table('users')->insert([
+        DB::table('users')->insert([
             'name' => 'Root',
             'last_name' => 'Sahum',
             'email' => 'root@sahum.gob.ve',
@@ -20,7 +16,7 @@ class UsersTableRootSeeder extends Seeder
             'remember_token' => str_random(10),
         ]);
 
-         DB::table('users')->insert([
+        DB::table('users')->insert([
             'name' => 'Member',
             'last_name' => 'Sahum',
             'email' => 'member@sahum.gob.ve',

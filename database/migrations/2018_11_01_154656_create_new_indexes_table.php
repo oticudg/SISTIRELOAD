@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateNewIndexesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('new_indexes', function (Blueprint $table) {
@@ -37,11 +33,6 @@ class CreateNewIndexesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('new_indexes');
