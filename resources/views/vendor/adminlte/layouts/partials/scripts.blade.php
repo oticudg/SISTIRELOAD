@@ -33,7 +33,7 @@
   {
     var data = google.visualization.arrayToDataTable(analytics);
     var options = {
-      title : 'Porcentaje de historias por sexo del paciente.'
+      title : 'PORCENTAJE DE HISTORIAS POR SEXO DEL PACIENTE.'
     };
     var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
     chart.draw(data, options);
@@ -52,7 +52,8 @@
   {
     var data = google.visualization.arrayToDataTable(analytics);
     var options = {
-      title : 'Porcentaje de historias por triaje de entrada.'
+      title : 'PORCENTAJE DE HISTORIAS POR TRIAJE DE ENTRADA.',
+      is3D: true,
     };
     var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
     chart.draw(data, options);
@@ -72,7 +73,8 @@
   {
     var data = google.visualization.arrayToDataTable(analytics);
     var options = {
-      title : 'Porcentaje por tipo paciente.'
+      title : 'PORCENTAJE POR TIPO DE DOCUMENTACIÓN.',
+      pieHole: 0.4,
     };
     var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
     chart.draw(data, options);

@@ -3,7 +3,7 @@
 @section('htmlheader')
 @include('adminlte::layouts.partials.htmlheader')
 @show
-<body class="skin-purple sidebar-mini">
+<body class="skin-purple sidebar-mini" style="text-transform: uppercase;">
     <div id="app" v-cloak>
         <div class="wrapper">
             @include('adminlte::layouts.partials.mainheader')

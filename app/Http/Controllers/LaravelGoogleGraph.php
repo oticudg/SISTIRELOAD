@@ -24,8 +24,8 @@ class LaravelGoogleGraph extends Controller
 
   function triage()
   {
-    $data = DB::table('new_indexes')
-    ->join('triages', 'new_indexes.id', '=', 'triages.id')
+    $data = DB::table('triages')
+    ->join('new_indexes', 'new_indexes.triage_id', '=', 'triages.id')
     ->select(
       DB::raw('triages.triage as triage'),
       DB::raw('count(*) as number'))

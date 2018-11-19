@@ -85,10 +85,10 @@ class NewIndexController extends Controller
         return Datatables::of(NewIndex::query())
         ->addColumn('action', function($index){
             $buttons = "<div class='btn-group btn-group-xs col-md-offset-3' role='toolbar'>
-            <a class='btn btn-info show-index btn-flat' n='1' href='".route('newindexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>
-            <a class='btn bg-yellow edit-index btn-flat' n='2' update='".route('newindexes.update', $index->id)."' href='".route('newindexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>";
+            <a class='btn btn-info show-index btn-flat' n='1' href='".route('newindexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='VER REGISTROS'><span class='fa fa-eye'></span></a>
+            <a class='btn bg-yellow edit-index btn-flat' n='2' update='".route('newindexes.update', $index->id)."' href='".route('newindexes.edit', $index->id)."' data-toggle='tooltip' data-placement='top' title='EDITAR REGISTROS'><span class='glyphicon glyphicon-edit'></span></a>";
             if (\Auth::user()->admin()) {
-                $buttons .= "<a class='btn btn-danger destroy-index btn-flat' href='".route('newindexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a>";
+                $buttons .= "<a class='btn btn-danger destroy-index btn-flat' href='".route('newindexes.destroy', $index->id)."''  data-toggle='tooltip' data-placement='top' title='ELIMINAR REGISTROS'><span class='glyphicon glyphicon-trash'></span></a>";
             }
             return $buttons .= "</div>";
         })

@@ -26,9 +26,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="user-body">
-                                        <a href="{{ url('changePassword') }}" data-toggle="modal"><span class="fa fa-cogs text-purple"></span> Cambiar contraseña</a>
+                                        <a href="{{ url('changePassword') }}" data-toggle="modal"><span class="fa fa-cogs text-purple"></span> CAMBIAR CONTRASEÑA</a>
                                         <div class="divider"></div>
-                                        <a href="{{ url('/logout') }}"  id="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out text-purple"></span> Cerrar sesion</a>
+                                        <a href="{{ url('/logout') }}"  id="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class="fa fa-sign-out text-purple"></span> CERRAR SESIÓN</a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                             <input type="submit" value="logout" style="display: none;">

@@ -27,7 +27,7 @@ class IndexController extends Controller
         return Datatables::of(Index::query())
         ->addColumn('action', function($index){
             $buttons = "<div class='btn-group btn-group-xs col-md-offset-5' role='toolbar'>
-            <a class='btn btn-info show-index' n='1' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='Ver registros'><span class='fa fa-eye'></span></a>";
+            <a class='btn btn-info show-index' n='1' href='".route('indexes.show', $index->id)."' data-toggle='tooltip' data-placement='top' title='VER REGISTROS'><span class='fa fa-eye'></span></a>";
             return $buttons .= "</div>";
         })
         ->filter(function ($query) use ($request) {

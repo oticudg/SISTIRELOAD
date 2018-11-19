@@ -8,72 +8,71 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border text-center">
-                    <h3 class="box-title">Bienvenido a Sisti Remasterizado</h3>
+                    <h3 class="box-title">BIENVENIDO A SISTI REMASTERIZADO</h3>
                 </div>
                 <div class="box-body"> 
                     <div class="info-box bg-blue" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-file-text-o"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Historias</span>
+                            <span class="info-box-text">HISTORIAS</span>
                             <span class="info-box-number">{{ $recordscount }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                                Historias creadas.
+                                HISTORIAS CREADAS.
                             </span>
                         </div>
                     </div>
                     <div class="info-box bg-green" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-stethoscope"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Triaje pediatrico</span>
+                            <span class="info-box-text">TRIAJE PEDIÁTRICO</span>
                             <span class="info-box-number">{{ $pediatric }}</span>
-                            <!-- The progress section is optional -->
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                                Entradas por triaje pediatrico.
+                                ENTRADAS POR TRIAJE PEDIÁTRICO.
                             </span>
                         </div>
                     </div>
                     <div class="info-box bg-yellow" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-medkit"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text" >Triaje adulto</span>
+                            <span class="info-box-text" >TRIAJE ADULTO</span>
                             <span class="info-box-number">{{ $adult }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                                Entradas por triaje adulto.
+                                ENTRADAS POR TRIAJE ADULTO.
                             </span>
                         </div>
                     </div>
                     <div class="info-box bg-red" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-user-md"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Hospitalizacion</span>
+                            <span class="info-box-text">HOSPITALIZACIÓN</span>
                             <span class="info-box-number">{{ $hospitalization }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                                Entradas por hospitalizacion.
+                                ENTRADAS POR HOSPITALIZACIÓN.
                             </span>
                         </div>
                     </div>
                     <div class="info-box bg-aqua" style="height: 90px;">
                         <span class="info-box-icon"><i class="fa fa-hospital-o"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Reten</span>
+                            <span class="info-box-text">RETEN DE NIÑOS</span>
                             <span class="info-box-number">{{ $catch }}</span>
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
                             <span class="progress-description">
-                                Entradas por reten.
+                                ENTRADAS POR RETEN DE NIÑOS.
                             </span>
                         </div>
                     </div>

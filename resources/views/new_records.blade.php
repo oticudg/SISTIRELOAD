@@ -2,11 +2,11 @@
 @section('main-content')
 <div class="box box-info">
     <div class="box-header with-border text-center">
-        <h3 class="box-title">Nuevas historias registradas</h3>
+        <h3 class="box-title">NUEVAS HISTORIAS REGISTRADAS</h3>
     </div>
     <div class="box-header">
-        <a id="addform" href="{{ route('newindexes.store')  }}" class="btn bg-purple btn-xs btn-flat" data-toggle="tooltip" data-placement="top" title="Crear historia"><span class="fa fa-plus"></span> Registrar</a>
-        <a class="btn bg-purple btn-xs btn-flat" data-toggle="tooltip" data-placement="top" title="Buscar por campo" id="searchrec"><span class="fa fa-search"></span> Busqueda avanzada</a>
+        <a id="addform" href="{{ route('newindexes.store')  }}" class="btn bg-purple btn-xs btn-flat" data-toggle="tooltip" data-placement="top" title="CREAR HISTORIA"><span class="fa fa-plus"></span> REGISTRAR</a>
+        <a class="btn bg-purple btn-xs btn-flat" data-toggle="tooltip" data-placement="top" title="BUSCAR POR CAMPO" id="searchrec"><span class="fa fa-search"></span> BÚSQUEDA AVANZADA</a>
     </div>
     <div class="box-header with-border" id="header2" style="display: none">
         <form id="searchrec2" method="POST" role="form">
@@ -16,36 +16,36 @@
                         <div class="input-group-addon">
                             <span class="fa fa-file-text text-purple"></span>
                         </div>
-                        <input type="text" class="form-control input-sm" id="number_record" name="number_record" pattern="[0-9]{1,11}" title="Ingrese solo numeros, entre 1-11 caracteres" placeholder="Numero de historia">
+                        <input type="text" class="form-control input-sm" id="number_record" name="number_record" pattern="[0-9]{1,11}" placeholder="NÚMERO DE HISTORIA">
                     </div>
-                    <small id="number_record" class="form-text text-muted">Ingresar por lo menos entre 1-11 digitos.</small>
+                    <small id="number_record" class="form-text text-muted">POR LO MENOS ENTRE 1-11 DÍGITOS.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <span class="fa fa-id-card text-purple"></span>
                         </div>
-                        <input type="text" id="patient_id" name="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control input-sm" placeholder="Numero de cedula">
+                        <input type="text" id="patient_id" name="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control input-sm" placeholder="NUMERO DE CÉDULA">
                     </div>
-                    <small id="patient_id" class="form-text text-muted">Ingresar entre 4-8 digitos.</small>
+                    <small id="patient_id" class="form-text text-muted">POR LO MENOS ENTRE 4-8 DÍGITOS.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <span class="fa fa-user-circle text-purple"></span>
                         </div>
-                        <input type="text" id="name" name="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control input-sm" placeholder="Nombres">
+                        <input type="text" id="name" name="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control input-sm" placeholder="NOMBRES">
                     </div>
-                    <small id="name" class="form-text text-muted">Ingrese los nombres del paciente.</small>
+                    <small id="name" class="form-text text-muted">NOMBRES DEL PACIENTE.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <span class="fa fa-user-circle-o text-purple"></span>
                         </div>
-                        <input type="text" id="last_name" name="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control input-sm" placeholder="Apellidos">
+                        <input type="text" id="last_name" name="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control input-sm" placeholder="APELLIDOS">
                     </div>
-                    <small id="last_name" class="form-text text-muted">Ingrese los apellidos del paciente.</small>
+                    <small id="last_name" class="form-text text-muted">APELLIDOS DEL PACIENTE.</small>
                 </div>
             </div>
             <div class="row">
@@ -54,22 +54,22 @@
                         <div class="input-group-addon">
                             <span class="fa fa-calendar text-purple"></span>
                         </div>
-                        <input type="text" id="birthdate" name="birthdate" readonly class="form-control input-sm" placeholder="dd/mm/aaaa">
+                        <input type="text" id="birthdate" name="birthdate" readonly class="form-control input-sm" placeholder="DD/MM/AAAA">
                     </div>
-                    <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de nacimiento del paciente.</small>
+                    <small id="emailHelp" class="form-text text-muted">FECHA DE NACIMIENTO DEL PACIENTE.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group date" data-provide="datepicker">
                         <div class="input-group-addon">
                             <span class="fa fa-calendar text-purple"></span>
                         </div>
-                        <input type="text" class="form-control input-sm" id="admission_date" name="admission_date" placeholder="dd/mm/aaaa" readonly>
+                        <input type="text" class="form-control input-sm" id="admission_date" name="admission_date" placeholder="DD/MM/AAAA" readonly>
                     </div>
-                    <small id="emailHelp" class="form-text text-muted">Ingrese la fecha de ingreso del paciente.</small>
+                    <small id="emailHelp" class="form-text text-muted">FECHA DE INGRESO DEL PACIENTE.</small>
                 </div>
                 <div class="form-group col-md-3">
-                    <button type="submit" class="btn bg-purple btn-sm btn-flat" data-toggle="tooltip" data-placement="top" title="Buscar filtros"><span class="fa fa-search"></span> Buscar</button>
-                </div>s
+                    <button type="submit" class="btn bg-purple btn-sm btn-flat" data-toggle="tooltip" data-placement="top" title="BUSCAR FILTROS"><span class="fa fa-search"></span> BUSCAR</button>
+                </div>
             </div>        
         </form>
     </div>
@@ -77,13 +77,13 @@
         <table id="new-records-table" class="table table-striped table-bordered table-hover table-condensed" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>N# Historia</th>
-                    <th>Cedula</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Nacimiento</th>
-                    <th>Ingreso</th>
-                    <th>Acciones</th>
+                    <th>N# HISTORIA</th>
+                    <th>CÉDULA</th>
+                    <th>NOMBRES</th>
+                    <th>APELLIDOS</th>
+                    <th>NACIMIENTO</th>
+                    <th>INGRESO</th>
+                    <th>ACCIONES</th>
                 </tr>
             </thead>
         </table>

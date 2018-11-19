@@ -110,7 +110,7 @@ return [
     'emailaddress'            => 'Correo electrónico',
     'enteremail'              => 'Introducir el correo electrónico',
     'yourtext'                => 'Su Texto',
-    'submit'                  => 'ENVIAR',
+    'submit'                  => 'Enviar',
     'email'                   => 'Correo Electrónico',
     'username'                => 'Nombre de usuario',
     'password'                => 'Contraseña',

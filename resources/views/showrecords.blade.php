@@ -10,53 +10,53 @@
                     <table id="records" class="table table-striped table-bordered table-hover table-condensed">
                         <tbody>
                             <tr>
-                                <th class="col-md-3">Historia:</th>
+                                <th class="col-md-3">HISTORIA:</th>
                                 <td class="col-md-3" id="number_record"></td>
-                                <th class="col-md-3">Documento:</th>
+                                <th class="col-md-3">DOCUMENTO:</th>
                                 <td class="col-md-3" id="type_doc"></td>
                             </tr>
                             <tr>
-                                <th>Cedula:</th>
+                                <th>CÉDULA:</th>
                                 <td class="" id="patient_id"></td>
-                                <th>Nombres:</th>
+                                <th>NOMBRES:</th>
                                 <td class="" id="name"></td>
                             </tr>
                             <tr>
-                                <th>Apellidos:</th>
+                                <th>APELLIDOS:</th>
                                 <td id="last_name" class=""></td>
-                                <th>Sexo:</th>
+                                <th>SEXO:</th>
                                 <td class="" id="sex"></td>
                             </tr>
                             <tr>
-                                <th>Fecha de nacimiento:</th>
+                                <th>FECHA DE NACIMIENTO:</th>
                                 <td class="" id="birthdate"></td>
-                                <th>Fecha de ingreso:</th>
+                                <th>FECHA DE INGRESO:</th>
                                 <td class="" id="admission_date"></td>
                             </tr>
                             <tr>
-                                <th>Triage:</th>
+                                <th>TRIAGE:</th>
                                 <td class="" id="triage"></td>
-                                <th>Fecha de egreso:</th>
+                                <th>FECHA DE EGRESO:</th>
                                 <td class="" id="egress_date"></td>
                             </tr>
                             <tr>
-                                <th>Estado:</th>
+                                <th>ESTADO:</th>
                                 <td class="" id="state"></td>
-                                <th>Municipio:</th>
+                                <th>MUNICIPIO:</th>
                                 <td class="" id="municipality"></td>
                             </tr>
                             <tr>
-                                <th>Parroquia:</th>
+                                <th>PARROQUIA:</th>
                                 <td class="" id="parish"></td>
-                                <th >Pais extranjero:</th>
+                                <th>PAÍS EXTRANJERO:</th>
                                 <td class="" id="foreigncountry"></td>
                             </tr>
                             <tr>
-                                <th>Usuario registrador:</th>
+                                <th>USUARIO REGISTRADOR:</th>
                                 <td id="user" colspan="3"></td>
                             </tr>
                             <tr>
-                                <th>Observacion del paciente:</th>
+                                <th>OBSERVACIÓN DEL PACIENTE:</th>
                                 <td id="observation" colspan="3"></td>
                             </tr>
                         </tbody>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-flat" data-dismiss="modal"><span class="fa fa-close"></span> Cerrar</button>
+                <button type="button" class="btn btn-default btn-flat" data-dismiss="modal"><span class="fa fa-close"></span> CERRAR</button>
             </div>
         </form>
     </div>

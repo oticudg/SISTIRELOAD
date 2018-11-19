@@ -70,8 +70,8 @@ class UserController extends Controller
         return Datatables::of($user)
         ->addColumn('action', function($user){
             return  "<div class='btn-group btn-group-xs col-md-offset-3' role='toolbar'>
-            <a class='btn bg-yellow btn-flat' onclick='editForm(". $user->id .")' data-toggle='tooltip' data-placement='top' title='Editar registros'><span class='glyphicon glyphicon-edit'></span></a>
-            <a class='btn btn-danger btn-flat' onclick='deleteData(". $user->id .")'  data-toggle='tooltip' data-placement='top' title='Eliminar registros'><span class='glyphicon glyphicon-trash'></span></a></div>";
+            <a class='btn bg-yellow btn-flat' onclick='editForm(". $user->id .")' data-toggle='tooltip' data-placement='top' title='EDITAR REGISTROS'><span class='glyphicon glyphicon-edit'></span></a>
+            <a class='btn btn-danger btn-flat' onclick='deleteData(". $user->id .")'  data-toggle='tooltip' data-placement='top' title='ELIMINAR REGISTROS'><span class='glyphicon glyphicon-trash'></span></a></div>";
         })->make(true);
     }
 
