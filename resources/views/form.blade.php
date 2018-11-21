@@ -44,7 +44,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle text-purple"></span>
                                 </div>
-                                <input type="text" id="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control" placeholder="NOMBRES">
+                                <input type="text" id="name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+{1,70}" name="name" class="form-control" placeholder="NOMBRES">
                             </div>
                             <small id="name" class="form-text text-muted"></small>
                         </div>
@@ -53,7 +53,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle-o text-purple"></span>
                                 </div>
-                                <input type="text" id="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control" placeholder="APELLIDOS">
+                                <input type="text" id="last_name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+{1,70}" name="last_name" class="form-control" placeholder="APELLIDOS">
                             </div>
                             <small id="last_name" class="form-text text-muted"></small>
                         </div>

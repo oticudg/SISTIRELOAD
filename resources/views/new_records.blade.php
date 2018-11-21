@@ -18,7 +18,7 @@
                         </div>
                         <input type="text" class="form-control input-sm" id="number_record" name="number_record" pattern="[0-9]{1,11}" placeholder="NÚMERO DE HISTORIA">
                     </div>
-                    <small id="number_record" class="form-text text-muted">POR LO MENOS ENTRE 1-11 DÍGITOS.</small>
+                    <small class="form-text text-muted">POR LO MENOS ENTRE 1-11 DÍGITOS.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group">
@@ -27,25 +27,25 @@
                         </div>
                         <input type="text" id="patient_id" name="patient_id" pattern="[0-9]{4,8}" name="patient_id"  class="form-control input-sm" placeholder="NUMERO DE CÉDULA">
                     </div>
-                    <small id="patient_id" class="form-text text-muted">POR LO MENOS ENTRE 4-8 DÍGITOS.</small>
+                    <small class="form-text text-muted">POR LO MENOS ENTRE 4-8 DÍGITOS.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <span class="fa fa-user-circle text-purple"></span>
                         </div>
-                        <input type="text" id="name" name="name" pattern="[A-Za-z ]{1,70}" name="name" class="form-control input-sm" placeholder="NOMBRES">
+                        <input type="text" id="name" name="name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+{1,70}" name="name" class="form-control input-sm" placeholder="NOMBRES">
                     </div>
-                    <small id="name" class="form-text text-muted">NOMBRES DEL PACIENTE.</small>
+                    <small class="form-text text-muted">NOMBRES DEL PACIENTE.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group">
                         <div class="input-group-addon">
                             <span class="fa fa-user-circle-o text-purple"></span>
                         </div>
-                        <input type="text" id="last_name" name="last_name" pattern="[A-Za-z ]{1,70}" name="last_name" class="form-control input-sm" placeholder="APELLIDOS">
+                        <input type="text" id="last_name" name="last_name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+{1,70}" name="last_name" class="form-control input-sm" placeholder="APELLIDOS">
                     </div>
-                    <small id="last_name" class="form-text text-muted">APELLIDOS DEL PACIENTE.</small>
+                    <small class="form-text text-muted">APELLIDOS DEL PACIENTE.</small>
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
                         </div>
                         <input type="text" id="birthdate" name="birthdate" readonly class="form-control input-sm" placeholder="DD/MM/AAAA">
                     </div>
-                    <small id="emailHelp" class="form-text text-muted">FECHA DE NACIMIENTO DEL PACIENTE.</small>
+                    <small class="form-text text-muted">FECHA DE NACIMIENTO DEL PACIENTE.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <div class="input-group date" data-provide="datepicker">
@@ -65,7 +65,7 @@
                         </div>
                         <input type="text" class="form-control input-sm" id="admission_date" name="admission_date" placeholder="DD/MM/AAAA" readonly>
                     </div>
-                    <small id="emailHelp" class="form-text text-muted">FECHA DE INGRESO DEL PACIENTE.</small>
+                    <small class="form-text text-muted">FECHA DE INGRESO DEL PACIENTE.</small>
                 </div>
                 <div class="form-group col-md-3">
                     <button type="submit" class="btn bg-purple btn-sm btn-flat" data-toggle="tooltip" data-placement="top" title="BUSCAR FILTROS"><span class="fa fa-search"></span> BUSCAR</button>
