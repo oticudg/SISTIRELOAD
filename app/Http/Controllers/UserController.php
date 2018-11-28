@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Yajra\Datatables\Services\DataTable;
 use Sisti\ { User };
+use Sisti\Http\Requests\{NewUserCreateRequest, NewUserEditRequest};
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     //
     }
 
-    public function store(Request $request)
+    public function store(NewUserCreateRequest $request)
     {
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
@@ -42,7 +43,7 @@ class UserController extends Controller
         return $user;
     }
 
-    public function update(Request $request, $id)
+    public function update(NewUserEditRequest $request, $id)
     {
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
