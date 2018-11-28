@@ -19,10 +19,18 @@ class AppServiceProvider extends ServiceProvider
        Schema::defaultStringLength(191);
 
        Validator::extend('alpha_spaces', function ($attribute, $value) {
-        // This will only accept alpha and spaces. 
-        // If you want to accept hyphens use: /^[\pL\s-]+$/u.
+
         return preg_match('/^[\pL\s]+$/u', $value); 
 
+        });
+
+       Validator::extend('alpha_email', function ($attribute, $value) {
+        if (strpos($value, '@sahum.gob.ve')) {
+            return true;
+        } elseif (strpos($value, '@SAHUM.GOB.VE')) {
+            return true;
+        }
+        return false;
         });
     }
 

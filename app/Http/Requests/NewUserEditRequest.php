@@ -26,7 +26,7 @@ class NewUserEditRequest extends FormRequest
         return [
             'name' => 'required|alpha_spaces|min:1|max:70',
             'last_name' => 'required|alpha_spaces|min:1|max:70',
-            'email' => 'required|email',
+            'email' => 'required|alpha_email|unique:users|email',
             'type' => 'required',
             'password' => 'required',
         ];
