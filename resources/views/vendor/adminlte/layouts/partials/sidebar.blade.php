@@ -32,7 +32,7 @@
                 </a>
                 <ul class="treeview-menu">
                     {{-- <li><a href="{{asset('pdf/manual'.Auth::user()->type.'.pdf')}}" target="_blank"><i class='fa fa-book text-blue'></i> <span> Manual de usuario</span></a></li> --}}
-                    <li><a href="{{asset('pdf/consultaparroquial.pdf')}}"><i class="fa fa-map text-info"></i> Consulta parroquial</a></li>
+                    <li><a href="{{asset('pdf/consultaparroquial.pdf')}}" target="_blank"><i class="fa fa-map text-info"></i> Consulta parroquial</a></li>
                 </ul>
             </li>
         </ul>
