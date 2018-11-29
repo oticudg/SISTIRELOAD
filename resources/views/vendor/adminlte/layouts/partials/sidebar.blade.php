@@ -22,7 +22,19 @@
             @if(Auth::user()->admin())
             <li class="{!! Request::is('user') ? 'active' : '' !!}"><a href="{{ url('user') }}"><i class='fa fa-users text-red'></i> <span> Usuarios</span></a></li>
             @endif
-           {{--  <li><a href="{{asset('pdf/manual'.Auth::user()->type.'.pdf')}}" target="_blank"><i class='glyphicon glyphicon-question-sign text-green'></i> <span> Ayuda</span></a></li> --}}
+            <li class="treeview">
+                <a href="#">
+                    <i class='glyphicon glyphicon-question-sign text-green'></i>
+                    <span>Ayuda</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    {{-- <li><a href="{{asset('pdf/manual'.Auth::user()->type.'.pdf')}}" target="_blank"><i class='fa fa-book text-blue'></i> <span> Manual de usuario</span></a></li> --}}
+                    <li><a href="{{asset('pdf/consultaparroquial.pdf')}}"><i class="fa fa-map text-info"></i> Consulta parroquial</a></li>
+                </ul>
+            </li>
         </ul>
     </section>
 </aside>
