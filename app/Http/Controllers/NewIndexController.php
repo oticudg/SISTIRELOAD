@@ -33,8 +33,10 @@ class NewIndexController extends Controller
             'admission_date' => $request['admission_date'],
             'egress_date' => $request['egress_date'],
             'anotherc_id' => $request['foreigncountry'],
+            'address' => $request['address'],
             'observation' => $request['observation'],
             'user_id' => Auth()->user()->id,
+            'updateu_id' => Auth()->user()->id,
             'triage_id' => $request['triage_id'],
             'parish_id' => $request['parish']
         ];
@@ -47,6 +49,7 @@ class NewIndexController extends Controller
         $index->user->name;
         $index->triage;
         $index->foreignCountry;
+        $index->updateu_id = $index->updateu->name . ' ' . $index->updateu->last_name;
         if ($index->parish)
             $index->parish->municipalities->states;
         return response()->json($index);
@@ -68,6 +71,7 @@ class NewIndexController extends Controller
         $index = NewIndex::find($id);
         $index->fill($request->all());
         $index->parish_id=$request->parish;
+        $index->updateu_id = Auth()->user()->id;
         $index->anotherc_id=$request->foreigncountry;
         $index->triage_id=$request->triage_id;
         $index->save();

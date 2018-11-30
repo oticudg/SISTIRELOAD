@@ -18,12 +18,21 @@ class NewIndex extends Model
         'admission_date',
         'egress_date',
         'anotherc_id',
+        'address',
         'observation',
         'user_id',
-        'parish_id'
+        'parish_id',
+        'updateu_id',
+        'created_at',
+        'updated_at'
     ];
 
     public function user()
+    {
+        return $this->belongsTo(User::class);
+    } 
+
+    public function updateu()
     {
         return $this->belongsTo(User::class);
     } 

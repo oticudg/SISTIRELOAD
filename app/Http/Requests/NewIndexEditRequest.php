@@ -24,7 +24,9 @@ class NewIndexEditRequest extends FormRequest
             'name' => 'required|alpha_spaces|min:1|max:70',
             'last_name' => 'required|alpha_spaces|min:1|max:70',
             'birthdate' => 'required|date_format:"Y-m-d"',
-            'triage_id' => 'required', 
+            'admission_date' => 'required|date_format:"Y-m-d"',
+            'triage_id' => 'required',
+            'address' => 'required', 
         ];
     }
 
@@ -41,7 +43,9 @@ class NewIndexEditRequest extends FormRequest
             'municipality' => 'municipio',
             'parish' => 'parroquia',
             'birthdate' => 'fecha de nacimiento',
+            'admission_date' => 'fecha de ingreso',
             'triage_id' => 'triaje',
+            'address' => 'dirección',
         ];
     }
 }

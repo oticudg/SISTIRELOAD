@@ -53,7 +53,13 @@
                             </tr>
                             <tr>
                                 <th>USUARIO REGISTRADOR:</th>
-                                <td id="user" colspan="3"></td>
+                                <td id="user"></td>
+                                <th>ULTIMO CAMBIO:</th>
+                                <td id="updateu_id"></td>
+                            </tr>
+                            <tr>
+                                <th>DIRECCIÓN DEL PACIENTE:</th>
+                                <td id="address" colspan="3"></td>
                             </tr>
                             <tr>
                                 <th>OBSERVACIÓN DEL PACIENTE:</th>

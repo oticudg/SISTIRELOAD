@@ -15,7 +15,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle text-purple"></span>
                                 </div>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="NOMBRE" required>
+                                <input type="text" id="name" name="name" pattern="a-zA-ZñÑáéíóúÁÉÍÓÚ\s+{1,70}" class="form-control" placeholder="NOMBRE" required>
                             </div>
                             <small id="name" class="form-text text-muted help-block with-errors">INGRESE EL NOMBRE DEL USUARIO.</small>
                         </div>
@@ -24,7 +24,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle-o text-purple"></span>
                                 </div>
-                                <input type="text" id="last_name" name="last_name" class="form-control" placeholder="APELLIDO" required>
+                                <input type="text" id="last_name" name="last_name" pattern="a-zA-ZñÑáéíóúÁÉÍÓÚ\s+{1,70}" class="form-control" placeholder="APELLIDO" required>
                             </div>
                             <small id="last_name" class="form-text text-muted help-block with-errors">INGRESE EL APELLIDO DEL USUARIO.</small>
                         </div>

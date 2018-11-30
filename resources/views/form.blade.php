@@ -44,7 +44,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle text-purple"></span>
                                 </div>
-                                <input type="text" id="name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+{1,70}" name="name" class="form-control" placeholder="NOMBRES">
+                                <input type="text" id="name" pattern="a-zA-ZñÑáéíóúÁÉÍÓÚ\s+{1,70}" name="name" class="form-control" placeholder="NOMBRES">
                             </div>
                             <small id="name" class="form-text text-muted"></small>
                         </div>
@@ -53,7 +53,7 @@
                                 <div class="input-group-addon">
                                     <span class="fa fa-user-circle-o text-purple"></span>
                                 </div>
-                                <input type="text" id="last_name" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+{1,70}" name="last_name" class="form-control" placeholder="APELLIDOS">
+                                <input type="text" id="last_name" pattern="a-zA-ZñÑáéíóúÁÉÍÓÚ\s+{1,70}" name="last_name" class="form-control" placeholder="APELLIDOS">
                             </div>
                             <small id="last_name" class="form-text text-muted"></small>
                         </div>
@@ -163,6 +163,12 @@
                             <small id="triage_id" class="form-text text-muted"></small>
                         </div>
                         <div class="form-group col-md-6"> 
+                            <textarea style="resize: none;" id="address" name="address" class="form-control" placeholder="DIRECCIÓN DEL PACIENTE" required>
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12"> 
                             <textarea style="resize: none;" id="observation" name="observation" class="form-control" placeholder="OBSERVACIONES DEL PACIENTE O SU HISTORIA">
                             </textarea>
                         </div>

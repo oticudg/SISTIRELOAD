@@ -17,7 +17,6 @@
 <script src="{{ url ('/plugins/vfs_fonts.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.html5.min.js') }}"></script>
 <script src="{{ url ('/plugins/buttons.print.min.js') }}"></script>
-<script src="{{ url ('/plugins/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('/plugins/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('js/custom.min.js') }}"></script>
 <script src="{{ url ('/plugins/loader.js') }}"></script>
