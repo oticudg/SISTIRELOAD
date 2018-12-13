@@ -1,11 +1,10 @@
 <?php
-
 Route::auth();
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/','Auth\LoginController@ShowLoginForm');
 	Route::get('changePassword','Auth\ResetPasswordController@showChangePasswordForm');
-	Route::post('changePassword','Auth\ResetPasswordController@changePassword')->name('changePassword');
-	Route::group(['middleware' => ['auth','admin']], function () {
+    Route::post('changePassword','Auth\ResetPasswordController@changePassword')->name('changePassword');
+	Route::group(['middleware' => ['admin']], function () {
 		Route::resource('user', 'UserController', [
 			'except' => ['create']
 		]);

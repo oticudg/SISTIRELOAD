@@ -32,7 +32,6 @@ class StatesTableSeeder extends Seeder
 			['state' => 'Yaracuy'],
 			['state' => 'Zulia'],
 			['state' => 'Distrito Capital'],
-			['state' => 'Dependencias Federales'],  
 		]);
 	}
 }
